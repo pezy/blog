@@ -1,0 +1,510 @@
+/**
+ * yue.css
+ *
+ * yue.css is designed for readable content.
+ *
+ * Copyright (c) 2013 by Hsiaoming Yang.
+ */
+
+.yue {
+  font: 400 18px/1.62 "Georgia", "Xin Gothic", "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft YaHei", "SimSun", sans-serif;
+  color: #333332;
+}
+.yue ::selection {
+  background-color: rgba(0,0,0,0.2);
+}
+.yue h1,
+.yue h2,
+.yue h3,
+.yue h4,
+.yue h5,
+.yue h6 {
+  color: #222223;
+}
+.yue h1 {
+  font-size: 1.8em;
+  margin: 0.67em 0;
+}
+.yue > h1 {
+  margin-top: 0;
+  font-size: 2em;
+}
+.yue h2 {
+  font-size: 1.5em;
+  margin: 0.83em 0;
+}
+.yue h3 {
+  font-size: 1.17em;
+  margin: 1em 0;
+}
+.yue h4,
+.yue h5,
+.yue h6 {
+  font-size: 1em;
+  margin: 1.6em 0 1em 0;
+}
+.yue h6 {
+  font-weight: 500;
+}
+.yue p {
+  margin-top: 0;
+  margin-bottom: 1.64em;
+}
+.yue a {
+  color: #111;
+  word-wrap: break-word;
+}
+.yue a:hover {
+  color: #555;
+}
+.yue strong,
+.yue b {
+  font-weight: 700;
+  color: #222;
+}
+.yue em,
+.yue i {
+  font-style: italic;
+  color: #222;
+}
+.yue img {
+  max-width: 98%;
+  margin: 0.2em 0;
+}
+.yue hr {
+  border: 0 none;
+  margin-bottom: 1em;
+}
+.yue hr:after {
+  color: #9f9f95;
+  font-size: 1.1em;
+  display: block;
+  content: "* * *";
+  text-align: center;
+  letter-spacing: 0.6em;
+}
+.yue blockquote {
+  padding-left: 20px;
+  border-left: 4px solid #dadada;
+  margin: 0 0 1.64em -24px;
+  color: #666664;
+}
+.yue ul,
+.yue ol {
+  margin: 0 0 24px 6px;
+  padding-left: 16px;
+}
+.yue ul {
+  list-style-type: square;
+}
+.yue ol {
+  list-style-type: decimal;
+}
+.yue li {
+  margin-bottom: 0.2em;
+}
+.yue li ul,
+.yue li ol {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 14px;
+}
+.yue li ul {
+  list-style-type: disc;
+}
+.yue li ul ul {
+  list-style-type: circle;
+}
+.yue li p {
+  margin: 0.4em 0 0.6em;
+}
+.yue .unstyled {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.yue code,
+.yue tt {
+  color: #808080;
+  font-size: 0.96em;
+  background-color: #f9f9f7;
+  padding: 1px 2px;
+  border: 1px solid #dadada;
+  border-radius: 3px;
+  font-family: "Inconsolata", "Menlo", monospace;
+}
+.yue pre {
+  padding: 7px;
+  border: 1px solid #dadada;
+  border-radius: 4px;
+  overflow: auto;
+  line-height: 1.5;
+  font-size: 0.96em;
+  font-family: "Inconsolata", "Menlo", monospace;
+  color: #4c4c4c;
+  background-color: #f9f9f7;
+}
+.yue pre code,
+.yue pre tt {
+  color: #4c4c4c;
+  border: none;
+  background-color: none;
+  padding: auto;
+}
+.yue table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 1.5em;
+  font-size: 0.96em;
+}
+.yue th,
+.yue td {
+  text-align: left;
+  padding: 4px 8px 4px 10px;
+  border: 1px solid #dadada;
+}
+.yue td {
+  vertical-align: top;
+}
+.yue tr:nth-child(even) {
+  background-color: #efefee;
+}
+/* syntax browed from github */
+
+pre .comment,
+pre .template_comment,
+pre .diff .header,
+pre .javadoc {
+  color: #998;
+  font-style: italic
+}
+
+pre .keyword,
+pre .css .rule .keyword,
+pre .winutils,
+pre .javascript .title,
+pre .nginx .title,
+pre .subst,
+pre .request,
+pre .status {
+  color: #333;
+  font-weight: bold
+}
+
+pre .number,
+pre .hexcolor,
+pre .ruby .constant {
+  color: #099;
+}
+
+pre .string,
+pre .tag .value,
+pre .phpdoc,
+pre .tex .formula {
+  color: #d14
+}
+
+pre .title,
+pre .id {
+  color: #900;
+  font-weight: bold
+}
+
+pre .javascript .title,
+pre .lisp .title,
+pre .clojure .title,
+pre .subst {
+  font-weight: normal
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .vhdl .literal,
+pre .tex .command {
+  color: #458;
+  font-weight: bold
+}
+
+pre .tag,
+pre .tag .title,
+pre .rules .property,
+pre .django .tag .keyword {
+  color: #000080;
+  font-weight: normal
+}
+
+pre .attribute,
+pre .variable,
+pre .lisp .body {
+  color: #008080
+}
+
+pre .regexp {
+  color: #009926
+}
+
+pre .class {
+  color: #458;
+  font-weight: bold
+}
+
+pre .symbol,
+pre .ruby .symbol .string,
+pre .lisp .keyword,
+pre .tex .special,
+pre .prompt {
+  color: #990073
+}
+
+pre .built_in,
+pre .lisp .title,
+pre .clojure .built_in {
+  color: #0086b3
+}
+
+pre .preprocessor,
+pre .pi,
+pre .doctype,
+pre .shebang,
+pre .cdata {
+  color: #999;
+  font-weight: bold
+}
+
+pre .deletion {
+  background: #fdd
+}
+
+pre .addition {
+  background: #dfd
+}
+
+pre .diff .change {
+  background: #0086b3
+}
+
+pre .chunk {
+  color: #aaa
+}
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+.sep {
+  margin: 0 18px;
+}
+/* layout */
+.header {
+  font-size: 16px;
+  font-family: "Optima", "Avenir", "Helvetica Neue", sans-serif;
+  padding: 20px 10px;
+}
+.header a {
+  color: #323233;
+}
+.header a:hover {
+  opacity: 0.6;
+}
+.header .menu {
+  text-align: right;
+}
+.header .brand {
+  float: left;
+  margin-right: 30px;
+  text-transform: uppercase;
+}
+.brand:before {
+  content: '»';
+}
+.brand a {
+  text-decoration: none;
+}
+.menu a {
+  margin-left: 14px;
+}
+.container {
+  max-width: 640px;
+  *width: 650px;
+  margin: 0 auto;
+  zoom: 1;
+}
+.container:after {
+  content: " ";
+  display: block;
+  visibility: none;
+  clear: both;
+}
+.document {
+  max-width: 640px;
+  *width: 650px;
+  margin: 0 auto;
+  padding: 30px 10px;
+}
+.footer {
+  margin: 0 auto;
+  max-width: 500px;
+  *width: 500px;
+  color: #555;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 15px;
+  line-height: 1.3;
+  padding: 20px 20px 30px;
+}
+.copyright {
+  text-align: center;
+  color: #ddd;
+}
+.copyright a {
+  color: #ddd;
+}
+@media (max-width: 650px) {
+  .footer {
+    padding-bottom: 10px;
+  }
+}
+
+/* entry */
+.entry-meta {
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+  color: #565655;
+  font-size: smaller;
+}
+.entry-description {
+  color: #676867;
+  font-size: larger;
+}
+.entry-tags a:before {
+  content: '#';
+  color: #ccc;
+}
+.entry-list .item {
+  margin-bottom: 1em;
+}
+.entry-list .item-title {
+  font-size: 16px;
+  margin-bottom: 0;
+}
+.entry-list .item-description {
+  color: #565655;
+  font-size: 16px;
+  padding-left: 84px;
+}
+.entry-list .item-description p {
+  margin: 0;
+}
+.entry-list .item time {
+  display: inline-block;
+  width: 80px;
+  font: normal 12px monospace;
+  color: #999;
+}
+
+.document a.title-permalink {
+  margin-left: 4px;
+  padding: 0 4px;
+  text-decoration: none;
+  color: #f0f0f2;
+}
+.document a.title-permalink:hover {
+  color: #5784bf;
+  background-color: #eee;
+}
+
+/* pagination */
+.pagination {
+  position: relative;
+  margin-top: 40px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: "Optima", "Avenir", "Helvetica Neue", sans-serif;
+}
+.pagination .newer {
+  position: absolute;
+  text-decoration: none;
+  left: 0;
+}
+.pagination .older {
+  position: absolute;
+  text-decoration: none;
+  right: 0;
+}
+.pagination .newer:before {
+  content: "«";
+}
+.pagination .older:after {
+  content: "»"
+}
+
+/* extra widget */
+.github {
+  position: fixed;
+  top: 40px;
+  right: -50px;
+  border: 2px solid #121622;
+  box-shadow: 0 0 8px #555;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.github:hover {
+  box-shadow: 0 0 12px #444;
+}
+.github .github-link {
+  display: block;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  padding: 2px 0;
+  width: 200px;
+  border: 1px dotted #383C46;
+  background-color: #121622;
+  color: #ECEDEE;
+  text-decoration: none;
+  text-align: center;
+}
+@media (max-width: 890px) {
+  .github {
+    display: none;
+  }
+}
+
+.document a.button {
+  display: inline-block;
+  padding: 1em;
+  margin: 0;
+  background-color: #222223;
+  color: #fcfcfd;
+  text-transform: uppercase;
+  border: none;
+  text-decoration: none;
+  outline: none;
+  border-radius: 3px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  font: bold 0.7em/1 "Arial", sans-serif;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.document a.button:hover {
+  opacity: 0.9;
+  color: white;
+}
+
+.tagcloud {
+  margin-bottom: 2em;
+}
+.tagcloud .count {
+  font-size: 12px;
+}
+.tagcloud a {
+  display: inline-block;
+  margin: 0.2em 0.4em;
+  opacity: 0.6;
+}
+.tagcloud a:hover {
+  opacity: 1;
+}

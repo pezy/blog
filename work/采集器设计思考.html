@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="generator" content="nico 0.5.0">
+    <meta name="theme" content="one 0.2">
+    <title>采集器设计思考</title>
+    <link rel="stylesheet" href="../static/one.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="brand">
+          <a class="home" href="../">pezy's blog</a>
+        </div>
+        <div class="menu" role="navigation">
+          <a href="../../../../life">Life</a>
+          <a href="../../../../work">Work</a>
+          <a href="../../../../study">Study</a>
+        </div>
+      </div>
+    </div>
+    <div class="document yue">
+<div class="hentry" itemscope itemtype="http://schema.org/Article">
+  <h1 class="entry-title" itemprop="name">采集器设计思考</h1>
+  <div class="entry-content" itemprop="articleBody"><p>领导总是想一出是一出，C#的移植工作才刚刚走上正轨，便把我们叫停，还是让我们把精力放到采集模块的设计上去。</p>
+<p>自我入职以来，我便一直从事着与采集相关的工作。开始我觉得这东西很神秘，很底层，可以有机会破解各类数据文件。后来渐渐觉得这是个无比简单的活计，也不会被领导重视。再后来多次重构采集框架，让我意识到，挑战无处不在。</p>
+<p>采集是个什么样的概念呢？就我的工作而言，其业务场景一直局限于井场仪器实时数据的截取。钻井过程中，综合录井仪的传感器，会将各种特征参数的值测量出来，在经过一些简单的计算，形成一套实时变化的数据，因仪器类型的不同，可能会存储于本地数据库中，可能只是暂存于临时文件，更先进些的会组织成<a href="http://home.sprynet.com/~carob/index.htm">WITS</a>标准的格式，发送到总部服务器进行存储。这些实时数据，被研究的价值并不大，传回总部服务器后，也多数被绘制成实时曲线进行展示。仅此而已，也许出现井喷等事故时，可以将曲线回放，分析事故原因。</p>
+<p>那么由此可见，采集的重点，其一在于真实性，其二在于时效性。这有点像是新闻了。保障真实性，就是数据不能被人为修正，传感器测量或计算的值应该原封不动地被传回；保障时效性，就是传感器刚一产生数据，就要被马上截取，并传回总部，期间时差不能超过5秒。所以，在设计采集程序的时候，第一要务是找到哪一个数据表、数据文件、数据包是&quot;原生态&quot;的，第二就是如何最小的减小开销，极大程度的减少时间消耗。功力就在两个词：观察、高效。</p>
+<p>遇到没有见过的仪器，首先就是要分析该仪器是如何处理数据的，最好能拿到它配套的计算软件，检查每一个有可能&quot;藏污纳垢&quot;的位置，快速定位应该取哪里的数据。然后就是考虑算法，如果是文件，如何能最快定位到新数据产生的位置，截取需要的值；如果是数据表，如何能优化SQL查询语句，如避免使用order by等费时的命令。</p>
+<p>以上基本是我第一年努力的目标。毕竟现场条件艰苦，不宜久留，快速找到自己需要的东西是最基本的能力。</p>
+<p>这个层面仍然属于业务范畴，真正落实到Code，就不得不未雨绸缪了。你想，如果遇到一个你完全不知道结构的二进制文件，让你快速解析出所需的数据，需要多长时间？如果遇到你不熟悉的数据库，让你从中获取数据，你又需要多长时间？</p>
+<p>这就需要提前积累，如必须设计一个公共的类，所有对于数据库的增删改查都应该封装成一个统一的接口，无论你面对的是SQL Server、Access、Foxpro、MySQL、Firebird还是SQLite，都执行相同的方法，那么取数据库特定表的数据，不就变得易如反掌。文件也是一样，文件的组织结构无非以下两类：</p>
+<ol>
+<li>一个文件一条数据<ul>
+<li>Key/Value形式</li>
+<li>结构体组织</li>
+</ul>
+</li>
+<li>一个文件全部数据<ul>
+<li>Table形式，有表头，然后一行一行数据</li>
+<li>结构体组织</li>
+</ul>
+</li>
+</ol>
+<p>结构体组织多为二进制，Key/Value和Table形式多为明文文本。前者解析的重点是结构体，后者解析的重点是表头。其余的操作是否也可以封装为公共类？这样我拿到结构体或表头，便能够立刻解析出最新数据。</p>
+<p>如果是较先进的仪器，符合WITS标准，并具备WITS发送能力，那么是否也应该准备好网络接收的类，无论是TCP Server还是Client，UDP，串口还是工业级别的OPC、DataSocket，我仍旧可以调用同样的方法。这样封装之后，我随时可以配置自己的接收端，接收到需要的数据。接收到了数据，是WITS格式的，还需要解析，这个操作也是需要封装的。</p>
+<p>好了，需要储备的技术还真不少，数据库、文件、网络、串口、各种协议。这些都是公共基础子模块，是必须不断优化的。这些代码的优劣是采集程序质量的决定因素。</p>
+<p>这就是我第二年的目标，准确的说，其实没有做的很好，期间也后悔过多次在大学没有夯实基础。没有几手硬功夫。</p>
+<p>其实到此为止，核心的东西我们都设计地差不多了，最后也是最难设计的，便是交互界面。还好在能源行业，对于用户体验并不是互联网那套思路，井场的工人们，也没有时间无聊到观察界面是否优雅。界面的目的就是最快最直接的呈现软件具备的功能。让现场人员，可以按最少的按钮，输入最少的信息，以最快的速度完成一次操作。(互联网正好相反，设计人员更希望用户多花点时间在使用软件上，最好流连忘返，忘了吃饭)</p>
+<p>第三年我基本在参考国外程序的类似程序，我发现国外的软件最为突出的特点就是灵活。他们的代码里一定没有任何写死的硬编码，每一个可能改变的地方，都会留出配置接口。但这样的缺陷也是明显的，配置界面会非常的复杂，然后后台数据库设计的非常的复杂，所有表、字段都是灵活的，都有元数据字典来管理。这就是老外的舍取:</p>
+<p>他们选择了<strong>七十二变</strong>，放弃了<strong>傻瓜易用</strong>。他们的软件定位在给专业的人用，无形中也提高了他们软件的品味。</p>
+<p>品味，是一个很玄妙的词，乔布斯有他的品味，苹果才如此优雅，你根本不需要学。但盖茨难道没有他的品味么？Windows难用的恰好合适，刚好让你能学会，还颇有成就感。再看看Linus呢？他的品味独具特色，Linux超级难学，人家压根就没准备给小白用，那是黑客与天才的系统，他们需要工具，而非玩具。</p>
+<p>回到采集，我需要做的事情，也就是找准软件的定位，然后恰如其分的给出软件应有的长相。这里面的主角依旧是配置，是不是也做到了每一个细节都能被配置？要知道井场除了综合录井仪，还有LWD/MWD，钻参仪等等，难道每一类仪器都需要重写一套采集程序么？如何拯救他们？是不是该考虑一下WITS统一的标准带来的好处呢？</p>
+<p>好的软件，是一个顺畅的数据流，采集软件，更像是诗经的开篇: </p>
+<blockquote>
+<p>参差荇菜，左右采之。</p>
+</blockquote>
+<p>WITS标准就像我们的箩筐，荇菜便是数据，软件就是这条美丽的河。</p>
+<p>&lt;- 全文完 -&gt;</p>
+</div>
+
+  <div class="entry-meta">
+    <time class="updated" datetime="2012-12-12T00:00:00.000Z" itemprop="dateModified">Wednesday, Dec 12th, 2012</time>
+  </div><div class="ds-thread"></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"pezy"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+</div>
+</div>
+    <div class="footer">
+      <p class="copyright">powered by <a href="">nico</a> 0.5.0</p>
+    </div>
+    <script src="../static/one.js"></script>
+  </body>
+</html>

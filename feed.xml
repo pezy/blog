@@ -5,6 +5,74 @@
     <link href="" />
     <id>feed.xml</id>
     <entry>
+        <title type="html"><![CDATA[Graphics View Framework(Qt5)学习笔记]]></title>
+        <link href="study/graphics-view-framework"/>
+        <published>2014-04-20T15:37:00.000Z</published>
+        <updated>2014-04-20T15:37:00.000Z</updated>
+        <id>study/graphics-view-framework</id>
+        <content type="html" xml:base="" xml:lang="en">
+            <![CDATA[ <p>本文基本内容翻译自<a href="http://qt-project.org/doc/qt-5/graphicsview.html">Qt官网的Graphics View Framework介绍</a>，一切权利归qt-project.org所有。</p>
+<h2 id="场景-scene">场景(Scene)</h2><p><a href="http://qt-project.org/doc/qt-5/qgraphicsscene.html">QGraphicsScene</a>提供了图形视图场景。</p>
+<p>场景的职责如下：</p>
+<ul>
+<li>提供一个快速的接口来管理大量的物件。</li>
+<li>为每个物件传递事件</li>
+<li>管理物件状态，如选择与光标的聚焦</li>
+<li>提供无转换的渲染功能，主要为打印。</li>
+</ul>
+<p>场景相当于<a href="http://qt-project.org/doc/qt-5/qgraphicsitem.html">QGraphicsItem</a>对象的容器。</p>
+<ul>
+<li>增加物件：<a href="http://qt-project.org/doc/qt-5/qgraphicsscene.html#addItem">QGraphicsScene::addItem()</a></li>
+<li>获取物件列表：<a href="http://qt-project.org/doc/qt-5/qgraphicsscene.html#items">QGraphicsScene::items()</a></li>
+<li>获取特定点的最上层物件：<a href="http://qt-project.org/doc/qt-5/qgraphicsscene.html#itemAt">QGraphicsScene::itemAt()</a></li>
+</ul>
+<p>需要注意的是，这些函数的返回顺序都是<strong>从上至下</strong>的。</p>
+<div class="highlight"><pre><code class="cpp">QGraphicsScene scene;
+QGraphicsRectItem *rect = scene.addRect(QRectF(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>));
+
+QGraphicsItem *item = scene.itemAt(<span class="number">50</span>, <span class="number">50</span>);
+<span class="comment">// item == rect</span></code></pre></div><ul>
+<li>获取选择的区域：<a href="http://qt-project.org/doc/qt-5/qgraphicsscene.html#setSelectionArea">QGraphicsScene::setSelectionArea</a></li>
+<li>获取选中物件列表：<a href="http://qt-project.org/doc/qt-5/qgraphicsscene.html#selectedItems">QGraphicsScene::selectedItems()</a></li>
+<li>设置鼠标焦点：<a href="http://qt-project.org/doc/qt-5/qgraphicsscene.html#setFocusItem">QGraphicsScene::setFocusItem()</a></li>
+<li>获取目前聚焦的物件：<a href="http://qt-project.org/doc/qt-5/qgraphicsscene.html#focusItem">QGraphicsScene::focusItem()</a></li>
+<li>使用打印机驱动来渲染部分场景：<a href="http://qt-project.org/doc/qt-5/qgraphicsscene.html#render">QGraphicsScene::render()</a></li>
+</ul>
+<h2 id="视图-view">视图(View)</h2><p><a href="http://qt-project.org/doc/qt-5/qgraphicsview.html">QGraphicsView</a>提供了一个视图部件，它可视化了场景的内容。可以将多个视图呈现同一个场景，可以为同样的数据集合提供多个视图窗口。这个视图部件是一个带滚动轴的区域，它提供了一个滚动条来浏览大场景。要想支持OpenGL，可以调用<a href="http://qt-project.org/doc/qt-5/qabstractscrollarea.html#setViewport">QGraphicsView::setViewport()</a>设置QGLWidget为视觉窗口。</p>
+<div class="highlight"><pre><code class="cpp">QGraphicsScene scene;
+myPopulateScene(&amp;scene);
+
+QGraphicsView view(&amp;scene);
+view.show();</code></pre></div><p><strong>视图</strong>接收来自键盘和鼠标的输入事件，将其转变为<strong>场景</strong>事件(主要通过恰当的坐标转换)，然后将这些事件体现在可视化场景中。</p>
+<ul>
+<li>利用变换矩阵：<a href="http://qt-project.org/doc/qt-5/qgraphicsview.html#transform">QGraphicsView::transform()</a>(支持一些高级的浏览特点，如缩放与旋转)</li>
+<li>场景与视图间的转换：<a href="http://qt-project.org/doc/qt-5/qgraphicsview.html#mapToScene">QGraphicsView::mapToScene()</a>、<a href="http://qt-project.org/doc/qt-5/qgraphicsview.html#mapFromScene">QGraphicsView::mapFromScene()</a></li>
+</ul>
+<p><img src="https://db.tt/2ozKNagR" alt="view widget"></p>
+<h2 id="物件-item">物件(Item)</h2><p><a href="http://qt-project.org/doc/qt-5/qgraphicsitem.html">QGraphicsItem</a>是场景基本图形部件的基类。提供以下标准物件：</p>
+<ul>
+<li>矩形(<a href="http://qt-project.org/doc/qt-5/qgraphicsrectitem.html">QGraphicsRectItem</a>)</li>
+<li>椭圆(<a href="http://qt-project.org/doc/qt-5/qgraphicsellipseitem.html">QGraphicsEllipseItem</a>)</li>
+<li>文本框(<a href="http://qt-project.org/doc/qt-5/qgraphicstextitem.html">QGraphicsTextItem</a>)</li>
+</ul>
+<p>更多时候，我们都会自定义图形物件，那样会更加灵活的使用QGraphicsItem的特性。</p>
+<p>除此之外，它还支持以下特点：</p>
+<ul>
+<li>鼠标的单击、移动、释放、双击、悬停、滚轮与右键菜单事件。</li>
+<li>光标焦点、快捷键</li>
+<li>拖拽</li>
+<li>通过父子层级关系分组，见<a href="http://qt-project.org/doc/qt-5/qgraphicsitemgroup.html">QGraphicsItemGroup</a></li>
+<li>碰撞检测</li>
+</ul>
+<p>与QGraphicView类似，物件存在一个局部坐标系统。提供了许多物件与物件、物件与场景间坐标对应功能。它也提供了矩阵变换函数：<a href="http://qt-project.org/doc/qt-5/qgraphicsitem.html#transform">QGraphicsItem::transform()</a>，这对缩放、旋转部分物件非常有效。</p>
+<p>物件可以包含其他物件(子物件)。子物件继承父物件的转换关系。尽管变换可以累加，但这些功能仍然基于局部坐标系。</p>
+<p>要支持碰撞检测，可以使用<a href="http://qt-project.org/doc/qt-5/qgraphicsitem.html#transform">QGraphicsItem::shape()</a>，<a href="https://qt-project.org/doc/qt-5/qgraphicsitem.html#collidesWithItem">QGraphicsItem::collidesWithItem()</a>
+，<a href="https://qt-project.org/doc/qt-5/qgraphicsitem.html#collidesWithPath">QGraphicsItem::collidesWithPath</a>等函数。</p>
+<p><img src="https://db.tt/viKSj9fy" alt="https://db.tt/viKSj9fy"></p>
+<p>====<em>下次介绍图形视图中的坐标系统</em>====</p>
+]]>
+        </content>
+    </entry><entry>
         <title type="html"><![CDATA[生活的意义]]></title>
         <link href="life/thinking-in-life"/>
         <published>2014-03-27T03:23:00.000Z</published>
@@ -1020,25 +1088,6 @@ pBuffer = new TCHAR[128]; // Allocates 128 or 256 BYTES, depending on compilatio
 <p>我只是这幅山水画边的观赏者，踱步于其中，醉心于每一笔勾勒，每一点浓淡，我早已梦入其中，不可自拔了。</p>
 <p>这是一场美妙的盛宴，我所能撰写下的，只是些残羹。需要一个个味蕾极佳的舌头，去回味它。这样，我们才能在这幅画上继续的画下去。</p>
 <p>谨记这片山水......</p>
-]]>
-        </content>
-    </entry><entry>
-        <title type="html"><![CDATA[睡前小感]]></title>
-        <link href="life/shuiqianxiaogan"/>
-        <published>2008-10-20T15:20:00.000Z</published>
-        <updated>2008-10-20T15:20:00.000Z</updated>
-        <id>life/shuiqianxiaogan</id>
-        <content type="html" xml:base="" xml:lang="en">
-            <![CDATA[ <p>主要是很郁闷，否则也不会没事在睡前乱感了，睡觉前想东西毕竟是很不爽的一件事。</p>
-<p>这郁闷的便是这辩论赛的事。</p>
-<p>我就不明白了，为什么我所在的队就没有一次赢呢？一年前我参赛是这样，现在我带队还是这样，怎么有种被诅咒的感觉呢？唉，真是惭愧啊，我被诅咒不要紧，这些跟我合作的兄弟们呐，惨啊，胜利就像一场盛宴，我们却连残羹也没搭上。要说没准备吗？今天打得这场我可是下了心血的啊，准备的也很充分了，该给队员说的也说了，哪怎么答，哪怎么问，我也说了很多遍了，为什么一上场就完全不是我想象的那个样子呢？我也是那么多时间，别人也是那么多时间，为什么我带的队就是输，为什么就不能让我赢一次呢？</p>
-<p>总之，我是有阴影了，再让我带队我是绝对不干了，还是埋头学习好了，并不是我受不了打击，我是不想再祸害无辜的群众了。</p>
-<p>遥想不才当年，刚入大学时，是四辩，参加系里的比赛一共有两场，一次代表本班，输了，没感觉；一次代表混合队，队友实力大大增强了，又输了，感觉微痛，无关大碍。后入系队，就算是陪练，还是把主队祸害了，首轮便被淘汰的惨痛事实，今日仍不能释怀。当时心灰意冷，暗暗发誓今生不提辩论二字，竟不想一年之后，学生会以其擅长的强迫方式又让我忍痛回首，重赴东山。第一次我并没在意，敷衍了事，惨败也情有可原，第二次我知耻而后勇，奋力的担当，企图力挽狂澜，背水一战后，竟是全军覆没。无语，不服，力竭，认命。</p>
-<p>嗨，本人过错，却伤了08级学弟学妹的心，年轻的心就要这样背负失败的阴影，人家鲁迅先生是肩住黑暗的闸门，放孩子们到光明的地方去，我却是以为能肩住黑暗的闸门，没想到孩子们都被放到黑暗中去了。</p>
-<p>“牢骚太盛防肠断”，就感这么多，睡了......</p>
-<blockquote>
-<p>PS:貌似这睡前小感也需要功夫啊，困的我......</p>
-</blockquote>
 ]]>
         </content>
     </entry><entry>

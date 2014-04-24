@@ -7,7 +7,7 @@
  */
 
 .yue {
-  font: 400 18px/1.62 "Georgia", "Xin Gothic", "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft YaHei", "SimSun", sans-serif;
+  font: 400 18px/1.62 "Courier new", "Xin Gothic", "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft YaHei", "SimSun", sans-serif;
   color: #333332;
 }
 .yue ::selection {
@@ -131,7 +131,7 @@
   padding: 1px 2px;
   border: 1px solid #dadada;
   border-radius: 3px;
-  font-family: "Inconsolata", "Menlo", monospace;
+  font-family: "Courier new", "Menlo", monospace;
 }
 .yue pre {
   padding: 7px;
@@ -140,7 +140,7 @@
   overflow: auto;
   line-height: 1.5;
   font-size: 0.96em;
-  font-family: "Inconsolata", "Menlo", monospace;
+  font-family: "Courier new", "Menlo", monospace;
   color: #4c4c4c;
   background-color: #f9f9f7;
 }

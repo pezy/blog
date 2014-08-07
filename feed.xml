@@ -5,7 +5,7 @@
     <link href="" />
     <id>feed.xml</id>
     <entry>
-        <title type="html"><![CDATA[纵使相逢应不识，尘满面，鬓如霜。——读《陆犯焉识》]]></title>
+        <title type="html"><![CDATA[读《陆犯焉识》]]></title>
         <link href="essay/read-lfys"/>
         <published>2014-05-22T13:46:00.000Z</published>
         <updated>2014-05-22T13:46:00.000Z</updated>
@@ -49,7 +49,7 @@
 ]]>
         </content>
     </entry><entry>
-        <title type="html"><![CDATA[广度有了，是否在深度上下点功夫呢？]]></title>
+        <title type="html"><![CDATA[工作变动]]></title>
         <link href="work/needdepth"/>
         <published>2014-05-09T00:00:00.000Z</published>
         <updated>2014-05-09T00:00:00.000Z</updated>
@@ -72,74 +72,6 @@
 <p>我突然神经一紧，明白了老师的良苦用心。老师过于委婉的说出了对我的希望，孩子，虚心点，海里的水很深，别沉溺在小池塘里坐井观天了。</p>
 <p>我删掉了那些东拼西凑准备交差的代码。重新捡起了《C++ GUI Qt4编程》，准备真正下点功夫，每一行代码的敲起。有些事，真的没有捷径。</p>
 <p><em>-EOF-</em></p>
-]]>
-        </content>
-    </entry><entry>
-        <title type="html"><![CDATA[Graphics View Framework(Qt5)学习笔记]]></title>
-        <link href="study/graphics-view-framework"/>
-        <published>2014-04-20T15:37:00.000Z</published>
-        <updated>2014-04-20T15:37:00.000Z</updated>
-        <id>study/graphics-view-framework</id>
-        <content type="html" xml:base="" xml:lang="en">
-            <![CDATA[ <p>本文基本内容翻译自<a href="http://qt-project.org/doc/qt-5/graphicsview.html">Qt官网的Graphics View Framework介绍</a>，一切权利归qt-project.org所有。</p>
-<h2 id="场景-scene">场景(Scene)</h2><p><a href="http://qt-project.org/doc/qt-5/qgraphicsscene.html">QGraphicsScene</a>提供了图形视图场景。</p>
-<p>场景的职责如下：</p>
-<ul>
-<li>提供一个快速的接口来管理大量的物件。</li>
-<li>为每个物件传递事件</li>
-<li>管理物件状态，如选择与光标的聚焦</li>
-<li>提供无转换的渲染功能，主要为打印。</li>
-</ul>
-<p>场景相当于<a href="http://qt-project.org/doc/qt-5/qgraphicsitem.html">QGraphicsItem</a>对象的容器。</p>
-<ul>
-<li>增加物件：<a href="http://qt-project.org/doc/qt-5/qgraphicsscene.html#addItem">QGraphicsScene::addItem()</a></li>
-<li>获取物件列表：<a href="http://qt-project.org/doc/qt-5/qgraphicsscene.html#items">QGraphicsScene::items()</a></li>
-<li>获取特定点的最上层物件：<a href="http://qt-project.org/doc/qt-5/qgraphicsscene.html#itemAt">QGraphicsScene::itemAt()</a></li>
-</ul>
-<p>需要注意的是，这些函数的返回顺序都是<strong>从上至下</strong>的。</p>
-<div class="highlight"><pre><code class="cpp">QGraphicsScene scene;
-QGraphicsRectItem *rect = scene.addRect(QRectF(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>));
-
-QGraphicsItem *item = scene.itemAt(<span class="number">50</span>, <span class="number">50</span>);
-<span class="comment">// item == rect</span></code></pre></div><ul>
-<li>获取选择的区域：<a href="http://qt-project.org/doc/qt-5/qgraphicsscene.html#setSelectionArea">QGraphicsScene::setSelectionArea</a></li>
-<li>获取选中物件列表：<a href="http://qt-project.org/doc/qt-5/qgraphicsscene.html#selectedItems">QGraphicsScene::selectedItems()</a></li>
-<li>设置鼠标焦点：<a href="http://qt-project.org/doc/qt-5/qgraphicsscene.html#setFocusItem">QGraphicsScene::setFocusItem()</a></li>
-<li>获取目前聚焦的物件：<a href="http://qt-project.org/doc/qt-5/qgraphicsscene.html#focusItem">QGraphicsScene::focusItem()</a></li>
-<li>使用打印机驱动来渲染部分场景：<a href="http://qt-project.org/doc/qt-5/qgraphicsscene.html#render">QGraphicsScene::render()</a></li>
-</ul>
-<h2 id="视图-view">视图(View)</h2><p><a href="http://qt-project.org/doc/qt-5/qgraphicsview.html">QGraphicsView</a>提供了一个视图部件，它可视化了场景的内容。可以将多个视图呈现同一个场景，可以为同样的数据集合提供多个视图窗口。这个视图部件是一个带滚动轴的区域，它提供了一个滚动条来浏览大场景。要想支持OpenGL，可以调用<a href="http://qt-project.org/doc/qt-5/qabstractscrollarea.html#setViewport">QGraphicsView::setViewport()</a>设置QGLWidget为视觉窗口。</p>
-<div class="highlight"><pre><code class="cpp">QGraphicsScene scene;
-myPopulateScene(&amp;scene);
-
-QGraphicsView view(&amp;scene);
-view.show();</code></pre></div><p><strong>视图</strong>接收来自键盘和鼠标的输入事件，将其转变为<strong>场景</strong>事件(主要通过恰当的坐标转换)，然后将这些事件体现在可视化场景中。</p>
-<ul>
-<li>利用变换矩阵：<a href="http://qt-project.org/doc/qt-5/qgraphicsview.html#transform">QGraphicsView::transform()</a>(支持一些高级的浏览特点，如缩放与旋转)</li>
-<li>场景与视图间的转换：<a href="http://qt-project.org/doc/qt-5/qgraphicsview.html#mapToScene">QGraphicsView::mapToScene()</a>、<a href="http://qt-project.org/doc/qt-5/qgraphicsview.html#mapFromScene">QGraphicsView::mapFromScene()</a></li>
-</ul>
-<p><img src="https://db.tt/2ozKNagR" alt="view widget"></p>
-<h2 id="物件-item">物件(Item)</h2><p><a href="http://qt-project.org/doc/qt-5/qgraphicsitem.html">QGraphicsItem</a>是场景基本图形部件的基类。提供以下标准物件：</p>
-<ul>
-<li>矩形(<a href="http://qt-project.org/doc/qt-5/qgraphicsrectitem.html">QGraphicsRectItem</a>)</li>
-<li>椭圆(<a href="http://qt-project.org/doc/qt-5/qgraphicsellipseitem.html">QGraphicsEllipseItem</a>)</li>
-<li>文本框(<a href="http://qt-project.org/doc/qt-5/qgraphicstextitem.html">QGraphicsTextItem</a>)</li>
-</ul>
-<p>更多时候，我们都会自定义图形物件，那样会更加灵活的使用QGraphicsItem的特性。</p>
-<p>除此之外，它还支持以下特点：</p>
-<ul>
-<li>鼠标的单击、移动、释放、双击、悬停、滚轮与右键菜单事件。</li>
-<li>光标焦点、快捷键</li>
-<li>拖拽</li>
-<li>通过父子层级关系分组，见<a href="http://qt-project.org/doc/qt-5/qgraphicsitemgroup.html">QGraphicsItemGroup</a></li>
-<li>碰撞检测</li>
-</ul>
-<p>与QGraphicView类似，物件存在一个局部坐标系统。提供了许多物件与物件、物件与场景间坐标对应功能。它也提供了矩阵变换函数：<a href="http://qt-project.org/doc/qt-5/qgraphicsitem.html#transform">QGraphicsItem::transform()</a>，这对缩放、旋转部分物件非常有效。</p>
-<p>物件可以包含其他物件(子物件)。子物件继承父物件的转换关系。尽管变换可以累加，但这些功能仍然基于局部坐标系。</p>
-<p>要支持碰撞检测，可以使用<a href="http://qt-project.org/doc/qt-5/qgraphicsitem.html#transform">QGraphicsItem::shape()</a>，<a href="https://qt-project.org/doc/qt-5/qgraphicsitem.html#collidesWithItem">QGraphicsItem::collidesWithItem()</a>
-，<a href="https://qt-project.org/doc/qt-5/qgraphicsitem.html#collidesWithPath">QGraphicsItem::collidesWithPath</a>等函数。</p>
-<p><img src="https://db.tt/viKSj9fy" alt="https://db.tt/viKSj9fy"></p>
-<p>====<em>下次介绍图形视图中的坐标系统</em>====</p>
 ]]>
         </content>
     </entry><entry>
@@ -195,7 +127,7 @@ view.show();</code></pre></div><p><strong>视图</strong>接收来自键盘和�
 <p>他们选择了<strong>七十二变</strong>，放弃了<strong>傻瓜易用</strong>。他们的软件定位在给专业的人用，无形中也提高了他们软件的品味。</p>
 <p>品味，是一个很玄妙的词，乔布斯有他的品味，苹果才如此优雅，你根本不需要学。但盖茨难道没有他的品味么？Windows难用的恰好合适，刚好让你能学会，还颇有成就感。再看看Linus呢？他的品味独具特色，Linux超级难学，人家压根就没准备给小白用，那是黑客与天才的系统，他们需要工具，而非玩具。</p>
 <p>回到采集，我需要做的事情，也就是找准软件的定位，然后恰如其分的给出软件应有的长相。这里面的主角依旧是配置，是不是也做到了每一个细节都能被配置？要知道井场除了综合录井仪，还有LWD/MWD，钻参仪等等，难道每一类仪器都需要重写一套采集程序么？如何拯救他们？是不是该考虑一下WITS统一的标准带来的好处呢？</p>
-<p>好的软件，是一个顺畅的数据流，采集软件，更像是诗经的开篇: </p>
+<p>好的软件，是一个顺畅的数据流，采集软件，更像是诗经的开篇:</p>
 <blockquote>
 <p>参差荇菜，左右采之。</p>
 </blockquote>
@@ -483,7 +415,7 @@ view.show();</code></pre></div><p><strong>视图</strong>接收来自键盘和�
 ]]>
         </content>
     </entry><entry>
-        <title type="html"><![CDATA[Call Function By Name?]]></title>
+        <title type="html"><![CDATA[Reflection In Cpp]]></title>
         <link href="study/call-function-by-name"/>
         <published>2012-12-11T15:22:00.000Z</published>
         <updated>2012-12-11T15:22:00.000Z</updated>
@@ -713,7 +645,7 @@ view.show();</code></pre></div><p><strong>视图</strong>接收来自键盘和�
 <span class="tag">&lt;<span class="title">QTY</span>&gt;</span>1<span class="tag">&lt;/<span class="title">QTY</span>&gt;</span>
 <span class="tag">&lt;/<span class="title">ITEM</span>&gt;</span>
 <span class="tag">&lt;/<span class="title">ORDER</span>&gt;</span></code></pre></div><p>千万不要忘记了保存。即调用<code>XML.Save();</code>。</p>
-<p><strong>NOTE:</strong> 这里有一点很囧，就是保存路径无法写<strong>相对路径</strong>。如果有知道如何写入相对路径的，请留言告知，感激不尽。 </p>
+<p><strong>NOTE:</strong> 这里有一点很囧，就是保存路径无法写<strong>相对路径</strong>。如果有知道如何写入相对路径的，请留言告知，感激不尽。</p>
 <h2 id="读取xml">读取XML</h2><p>我们就来读上面写好的<code>Sample.xml</code>吧。如果在同一函数中，完全可以用<a href="http://www.firstobject.com/dn_markGetDoc.htm">GetDoc</a>方法重新读取该文档：</p>
 <pre>MCD_STR strXML = xml.GetDoc();
 
@@ -837,7 +769,7 @@ view.show();</code></pre></div><p><strong>视图</strong>接收来自键盘和�
     }
 
     CString strFindSN(L<span class="string">"87890310-A"</span>);
-    MCD_STR strSN; 
+    MCD_STR strSN;
     xml.ResetPos(); <span class="comment">// top of document</span>
     xml.FindElem(); <span class="comment">// ORDER element is root</span>
     xml.IntoElem(); <span class="comment">// inside ORDER</span>
@@ -912,7 +844,7 @@ typedef char TCHAR;
 </pre><p><strong>wc</strong>表示宽字符，可知<code>wcs</code>表示宽字符串，同理可知<code>_tcs</code>表示_T字符串，能猜到_T在逻辑上既代表<code>char</code>又代表<code>wchar_t</code>了吧？</p>
 <p>不过，实际上，<code>_tcslen</code>(还有其他<code>_tcs</code>前缀的函数)并<strong>不是</strong>一个拥有完整定义的真实函数，而仅仅是一个<strong>宏</strong>。其定义应该长这样子：</p>
 <pre>#ifdef _UNICODE
-#define _tcslen wcslen 
+#define _tcslen wcslen
 #else
 #define _tcslen strlen
 #endif
@@ -928,13 +860,13 @@ typedef char TCHAR;
 <pre>void _TPrintChar(wchar_t);
 
 </pre><p>该怎么办呢？单字节参数不会无缘无故的变成双字节。其实那是两个不同的函数：</p>
-<pre>void PrintCharA(char); // A = ANSI 
+<pre>void PrintCharA(char); // A = ANSI
 void PrintCharW(wchar_t); // W = Wide character
 
 </pre><p>如果定义一个宏，就轻而易举的解决了这个问题：</p>
 <pre>#ifdef _UNICODE
-void _TPrintChar(wchar_t); 
-#else 
+void _TPrintChar(wchar_t);
+#else
 void _TPrintChar(char);
 #endif
 
@@ -968,10 +900,10 @@ _T(&quot;Either string, depending on compilation&quot;); // ANSI or Unicode
 
 </pre><p>其中，无前缀的是ANSI字符串，<strong>L</strong>前缀的是Unicode字符串，以<code>_T</code>或<code>TEXT</code>标识的，将根据宏定义而定。还是一样，<code>_T</code>和<code>TEXT</code>只是宏而已，它们定义如下：</p>
 <pre>// SIMPLIFIED
-#ifdef _UNICODE 
+#ifdef _UNICODE
  #define _T(c) L##c
  #define TEXT(c) L##c
-#else 
+#else
  #define _T(c) c
  #define TEXT(c) c
 #endif
@@ -1015,26 +947,26 @@ extern public static int SetWindowText(IntPtr hWnd, string lpString);
 <ul>
 <li><code>CreateProcess</code></li>
 <li><code>GetUserName</code></li>
-<li><code>OpenDesktop</code> </li>
-<li><code>DeleteFile</code> </li>
-<li>etc </li>
+<li><code>OpenDesktop</code></li>
+<li><code>DeleteFile</code></li>
+<li>etc</li>
 </ul>
 <p>这就是为何都推荐直接使用Unicode版本函数的原因了。不要仅仅因为多年的习惯，而固守ANSI不放，试着用Unicode来编译吧。但，我们可能还是会去存储或读取ANSI字符串，尤其在某些文件操作和消息传递中。这些转换函数还是有其存在的意义的。</p>
 <p><strong>注意</strong>：还有一种常见的定义类型：<strong><code>WCHAR</code></strong>，它等价于<code>wchar_t</code>。</p>
 <h2 id="更好的指针表示">更好的指针表示</h2><p><code>TCHAR</code>往往修饰单个字符，当然可以声明一个<code>TCHAR</code>的数组。如果你想表示一个<em>character-pointer</em>或一个<em>const-character-pointer</em>，会用下列哪一个呢？</p>
-<pre>// ANSI characters 
-foo_ansi(char*); 
-foo_ansi(const char*); 
-/*const*/ char* pString; 
+<pre>// ANSI characters
+foo_ansi(char*);
+foo_ansi(const char*);
+/*const*/ char* pString;
 
-// Unicode/wide-string 
-foo_uni(WCHAR*); 
-wchar_t* foo_uni(const WCHAR*); 
-/*const*/ WCHAR* pString; 
+// Unicode/wide-string
+foo_uni(WCHAR*);
+wchar_t* foo_uni(const WCHAR*);
+/*const*/ WCHAR* pString;
 
-// Independent 
-foo_char(TCHAR*); 
-foo_char(const TCHAR*); 
+// Independent
+foo_char(TCHAR*);
+foo_char(const TCHAR*);
 /*const*/ TCHAR* pString;
 
 </pre><p>看过<code>TCHAR</code>的解释，应该会很明确的选择最后一种了吧。那样表示字符串最有效。别忘了引入windows.h头文件。<strong>注意</strong>：如果你的项目直接或间接的引入了windows.h，就不需要引入<code>TCHAR.H</code>了。</p>
@@ -1050,9 +982,9 @@ typedef const char* LPCSTR;
 
 </pre><p>其含义拆解如下：</p>
 <ul>
-<li><strong>LP</strong> – Long Pointer </li>
-<li><strong>C</strong> – Constant </li>
-<li><strong>STR</strong> – String </li>
+<li><strong>LP</strong> – Long Pointer</li>
+<li><strong>C</strong> – Constant</li>
+<li><strong>STR</strong> – String</li>
 </ul>
 <p><code>LPCSTR</code>的本质含义是指向固定字符串的(长)指针。</p>
 <p>用新的形式来表述<code>strcpy</code>就是：</p>
@@ -1092,7 +1024,7 @@ nLength = wcslen(L&quot;Unicode&quot;);
 <p>存在<code>wcs-</code>函数对应<code>str-</code>函数，前者处理Unicode字符串，后者处理ANSI字符串。</p>
 <p>虽然我已经建议过，直接用Unicode的函数替代ANSI与TCHAR的函数。原因很简单，应用程序是必须使用Unicode的，且无须考虑ANSI的兼容性。但出于完整性的考虑，还是继续说明对应的通TCHAR函数吧。</p>
 <p>计算字符串长度，可以用<strong><code>_tcslen</code></strong>函数(一个宏)。通常定义如下：</p>
-<pre>size_t _tcslen(const TCHAR* szString); 
+<pre>size_t _tcslen(const TCHAR* szString);
 </pre><p>或
     size_t _tcslen(LPCTSTR szString);</p>
 <p>这里的<strong><code>LPCTSTR</code></strong>可分解为：</p>
@@ -1155,11 +1087,11 @@ DWORD GetCurrentDirectory(DWORD nBufferLength,LPTSTR lpBuffer);
 </pre><p>继续说，你肯定见过某些函数/方法中需要传入<strong>字符数</strong>，或是返回字符数吧。譬如<code>GetCurrentDirectory</code>，你需要传入的是字符数，而<strong>不是</strong>字节数。例如：</p>
 <pre>TCHAR sCurrentDir[255];
 
-// Pass 255 and not 255*2 
+// Pass 255 and not 255*2
 GetCurrentDirectory(sCurrentDir, 255);
 
 </pre><p>而另一方面，如果你需要为数字或字符数组分配空间，则一定要分配整的字节数。在C++中，常使用<code>new</code>关键字：</p>
-<pre>LPTSTR pBuffer; // TCHAR* 
+<pre>LPTSTR pBuffer; // TCHAR*
 
 pBuffer = new TCHAR[128]; // Allocates 128 or 256 BYTES, depending on compilation.
 
@@ -1168,6 +1100,35 @@ pBuffer = new TCHAR[128]; // Allocates 128 or 256 BYTES, depending on compilatio
 
 </pre><p>这里将返回值强制转换是很有必要的，原因自己领悟。<code>malloc</code>语句内的表达式保证分配了其需要的字节数，并为所要求的字符数分配了空间。</p>
 <p><strong> <em>这篇文章翻译自<a href="http://www.codeproject.com/Articles/76252/What-are-TCHAR-WCHAR-LPSTR-LPWSTR-LPCTSTR-etc">What are TCHAR, WCHAR, LPSTR, LPWSTR, LPCTSTR (etc.)?</a>，由于时间仓促以及水平有限，必然存在某些错误，还请高手指正！</em> </strong></p>
+]]>
+        </content>
+    </entry><entry>
+        <title type="html"><![CDATA[一些感悟]]></title>
+        <link href="essay/sentiment"/>
+        <published>2012-02-04T13:38:44.000Z</published>
+        <updated>2012-02-04T13:38:44.000Z</updated>
+        <id>essay/sentiment</id>
+        <content type="html" xml:base="" xml:lang="en">
+            <![CDATA[ <p>自从有了微博，就很少注意博客了，而且不知不觉习惯了浏览、转发和评论，就算有感悟，也会寥寥几句概括，废话少了，真心的、感情的、发泄的那些话也少了。时常会感觉良好，常以第三者自居，评价社会、评价别人的争论、评价别人的得失。渐渐的就忘掉了，哦，还有自己。</p>
+<p>韩寒坚持没有微博是明智的，只有博客更多的才是自己的声音。</p>
+<p>刚才去打乒乓球，有一个很厉害的球友，一直站桩，我们轮流上，他都无懈可击。开始我连他的发球都接不住，于是一直在台下思考破解他发球的方法，最后慢慢的还真就悟到了一些，接球没问题了。但还是输，原来这家伙并不光是发球厉害，每一次的接球也极有准度，能够很好的把握接球点与弧度，而且落点感觉极其精准，几次交锋，仍是棋差一着。渐渐的有些着急，本来想好的方案却因为急切或是紧张而没有发挥出来。虽然小有胜利，但是仍和预想的差的太远。这时，心里就想到了放弃，算了，反正也打不赢，心里这么想，手上也没闲着，各种无准度的抽球。到了台下，又有些后悔，暗暗责怪自己，怎么就不知道镇定点，输了一两次不代表没有机会，与其气急败坏的浪费机会，为什么不静下心好好分析原因、好好接发每一个球。</p>
+<p>这时，我忽然悟到了更远的东西——人生。</p>
+<p>其实人生是什么，就是人的生活，而生活是什么，就是生而活着。活着会干很多事情，打乒乓球是一件，从小的学习考试也是一件，学车是一件，写文章编程都是一件。这些组成了生活，也就组成了人生。什么是心态，就是不会在失败的时候气馁，而是全力以赴地迎接下一次的挑战。考拉小巫的书看完后，最大的感触就是意识到我最大的毛病：目标恐惧症。</p>
+<p>什么是恐惧症：</p>
+<blockquote>
+<p>恐惧症是以恐怖症状为主要临床表现的神经症。患者对某些特定的对象产生强烈和不必要的恐惧，伴有回避行为。恐惧的对象可能是单一的或多种的，如动物、广场、闭室、登高或社交活动等。恐惧发作时往往伴有显著的植物神经症状。当事人极力回避所害怕的处境，恐惧反应与引起恐惧的对象极不相称，他本人也知道害怕是过分的、不应该的或不合理的，却难以控制而反复出现。</p>
+<p>——摘自互动百科。</p>
+</blockquote>
+<p>但凡是即将发生的事情，我都会莫名的恐惧或者紧张。就像打乒乓球那样，每一次都会消耗大量的精力去克服对手来球之前的紧张。有人可能会不理解，这又不是什么比赛，就是平时玩玩而已，至于那么紧张吗？同样的问题出现在我人生的各个阶段，不就是一次英语单词的小测试，至于那么紧张吗？不就是一次模拟考试么，又不是正式的，至于么？不就是考一个交规么，没听说谁不过的，至于那么紧张吗？</p>
+<p>但，我真的不想紧张，我是真的很难放松。只要这件事出现在我的计划中，我都会莫名的紧张，甚至会恐惧它的到来，这状态将一直持续到这件事结束。无论这件事多么的小，有时哪怕是和某不熟悉的人说一句话。（不是暗恋那种）</p>
+<p>以前知道自己有这个毛病，但以前是学生，常突出表现在考试来临前。于是以为自己有考试恐惧症，后来没有考试了，工作中社交关系多了，又发现自己有社交恐惧症。上面分发下来的任务多了，又发现自己有任务恐惧症。于是时刻有压力，都是毫无必要的压力，有压力就会想到逃避，会选择忘记，而这样恰好滋生了懒惰。一旦和懒惰站在同一条战线，我就被这些莫名其妙、毫无价值的缺陷击溃，失败也就是常事了。</p>
+<p>现在知道了，我的确有这个毛病，恐惧症。不是自闭、不是自卑、不是神经质，就是恐惧。我妈喜欢说我怕事，其实这很憋屈，我知道勇敢是怎么一回事，我也并不会害怕什么挑战，但我只是会在选择迎接挑战后紧张、恐惧，其实人人都会不同层度的有一些，而我只是更严重罢了。因为这个我失去了太多，高考、英语、考研、甚至是大学里的各项考试。除了考试，我还失去了和很多牛人交流的机会，连同学聚会都会恐惧，连报名参加科研项目都会恐惧，但我真的不是害怕，我会答应聚会、主动申请参与科研，但最后却被莫名的压力压垮，实在是不堪忍受那种恐惧的滋味，而临时放弃。但事后又会自责，渐渐就是自卑，最可怕的时候就是自弃。</p>
+<p>但考拉小巫克服下来了，她的日记里提到了这个毛病，也提到了她最好的朋友胖咸鱼的帮助。她一路走过来，曾经和我一样，一直失败，会气急败坏，会放弃，会紧张，会恐惧。但她仍是走过来了，一直坚持着自己的梦想，克服着各种困难。我以为牛人一直都会很牛，就像我那位北大的同学，永远很淡定很自信。没想到也会有很多考拉小巫这样的人，从一个很普通的人慢慢走上梦想的舞台，变得很优秀。真的很感谢她的书，那不仅仅是教会我一些学英语的技巧(其实这是我买书的初衷)，更多的是告诉我永远都有希望，人一定能够发生一些改变。脱胎换骨不是不可能，只是会很疼，蚕蛹破茧而出很辉煌，背后却有辛勤的日日夜夜。再次推荐这本书<a href="http://book.douban.com/subject/7059662/">《考拉小巫的英语学习日记》</a>。</p>
+<p>书里面说，你得到什么，就意味着你将失去什么。就像现在的我，选择写下这篇博客，就必须放弃每周必看的非诚勿扰。如果选择了考研，就必须放弃一切玩的时间。选择了梦想，就必须放弃妥协，放弃懒惰，放弃舒适的生活。《乔布斯传》里告诫：don&#39;t settle!就是要人们放弃安分，放弃迟钝，放弃麻木。</p>
+<p>鱼与熊掌不可兼得，你选择的那个，应该尽可能的离你的梦想近一些。</p>
+<p>其实恐惧，还是来自于内心的自卑，担心自己会做不好，会出问题，会不完美。其实世间本就不都是好的，本就存在很多的问题，本就不完美。孔子说：君子不忧不惧。那是一种精神的自我认同，一种人格的自我认同，一种生存价值的自我认同。越是存在问题，越是要解决，越是要奋进，越是要淡定。淡定不是一种麻木，不是一种死猪不怕开水烫的状态。而是单纯的做好该做的、能做的、可以准备的，不多想，不乱想。和软件设计一样，少既是多。恐惧什么呢？即使像韩寒那样天才一世，还是会被别人泼脏水。该来的总会来，恐惧也没有用。</p>
+<p>考拉小巫还提到了“傻子哲学”，一个傻子往往比聪明人更容易成功，单纯的去追求自己的梦想，不东张西望，不朝三暮四，不自我怀疑，不胡思乱想。大家都会以为傻子赢在坚持，就像阿甘、许三多那样。其实，傻子真正的绝活就是不忧不惧，少些思虑，多些胆量，勇往直前。</p>
+<p>就像那个乒乓球高手，看似赢在发球，实际是赢在多年的苦功练就出的接球感觉。</p>
 ]]>
         </content>
     </entry>

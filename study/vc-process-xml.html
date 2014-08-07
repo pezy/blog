@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="generator" content="nico 0.5.0">
+    <meta name="generator" content="nico 0.5.1">
     <meta name="theme" content="one 0.2">
     <title>VC处理XML的方法</title>
     <link rel="stylesheet" href="../static/one.css" />
@@ -16,17 +16,19 @@
         </div>
         <div class="menu" role="navigation">
           <a href="https://github.com/pezy/blog/wiki/..">Wiki</a>
-          <a href="../../../../../life">Life</a>
-          <a href="../../../../../work">Work</a>
-          <a href="../../../../../study">Study</a>
-          <a href="../../../../../essay">Essay</a>
-          <a href="../../../../../poem">听雨集</a>
+          <a href="../../life">Life</a>
+          <a href="../../work">Work</a>
+          <a href="../../study">Study</a>
+          <a href="../../essay">Essay</a>
+          <a href="../../poem">听雨集</a>
         </div>
       </div>
     </div>
     <div class="document yue">
 <div class="hentry" itemscope itemtype="http://schema.org/Article">
   <h1 class="entry-title" itemprop="name">VC处理XML的方法</h1>
+  <!--
+  <div class="entry-description" itemprop="description"><p>对CMarkup的简介</p></div>-->
   <div class="entry-content" itemprop="articleBody"><p>目前调研到两种比较好的方法：<code>CMarkup</code>和<code>TinyXML-2</code>。</p>
 <p>以下是两者分别的文档：<a href="http://www.firstobject.com/dn_markupmethods.htm">CMarkup</a>，<a href="http://www.grinninglizard.com/tinyxml2docs/index.html">TinyXML-2</a></p>
 <p>从上手的难易程度来看，目前偏向于使用<code>CMarkup</code>，不过有机会一定要研究一下<code>TinyXML-2</code>的使用，目前关于<code>TinyXML-2</code>的中文资料较少，正好花时间翻译整理一下。另外，它不仅开源，而且功能较<code>CMarkup</code>要全面，文档更加齐全。</p>
@@ -62,7 +64,7 @@
 <span class="tag">&lt;<span class="title">QTY</span>&gt;</span>1<span class="tag">&lt;/<span class="title">QTY</span>&gt;</span>
 <span class="tag">&lt;/<span class="title">ITEM</span>&gt;</span>
 <span class="tag">&lt;/<span class="title">ORDER</span>&gt;</span></code></pre></div><p>千万不要忘记了保存。即调用<code>XML.Save();</code>。</p>
-<p><strong>NOTE:</strong> 这里有一点很囧，就是保存路径无法写<strong>相对路径</strong>。如果有知道如何写入相对路径的，请留言告知，感激不尽。 </p>
+<p><strong>NOTE:</strong> 这里有一点很囧，就是保存路径无法写<strong>相对路径</strong>。如果有知道如何写入相对路径的，请留言告知，感激不尽。</p>
 <h2 id="读取xml">读取XML</h2><p>我们就来读上面写好的<code>Sample.xml</code>吧。如果在同一函数中，完全可以用<a href="http://www.firstobject.com/dn_markGetDoc.htm">GetDoc</a>方法重新读取该文档：</p>
 <pre>MCD_STR strXML = xml.GetDoc();
 
@@ -186,7 +188,7 @@
     }
 
     CString strFindSN(L<span class="string">"87890310-A"</span>);
-    MCD_STR strSN; 
+    MCD_STR strSN;
     xml.ResetPos(); <span class="comment">// top of document</span>
     xml.FindElem(); <span class="comment">// ORDER element is root</span>
     xml.IntoElem(); <span class="comment">// inside ORDER</span>

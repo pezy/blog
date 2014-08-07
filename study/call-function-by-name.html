@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="generator" content="nico 0.5.0">
+    <meta name="generator" content="nico 0.5.1">
     <meta name="theme" content="one 0.2">
-    <title>Call Function By Name?</title>
+    <title>Reflection In Cpp</title>
     <link rel="stylesheet" href="../static/one.css" />
   </head>
   <body>
@@ -16,17 +16,19 @@
         </div>
         <div class="menu" role="navigation">
           <a href="https://github.com/pezy/blog/wiki/..">Wiki</a>
-          <a href="../../../../../life">Life</a>
-          <a href="../../../../../work">Work</a>
-          <a href="../../../../../study">Study</a>
-          <a href="../../../../../essay">Essay</a>
-          <a href="../../../../../poem">听雨集</a>
+          <a href="../../life">Life</a>
+          <a href="../../work">Work</a>
+          <a href="../../study">Study</a>
+          <a href="../../essay">Essay</a>
+          <a href="../../poem">听雨集</a>
         </div>
       </div>
     </div>
     <div class="document yue">
 <div class="hentry" itemscope itemtype="http://schema.org/Article">
-  <h1 class="entry-title" itemprop="name">Call Function By Name?</h1>
+  <h1 class="entry-title" itemprop="name">Reflection In Cpp</h1>
+  <!--
+  <div class="entry-description" itemprop="description"><p>Call Function By Name?</p></div>-->
   <div class="entry-content" itemprop="articleBody"><p>今天项目中需要通过读取数据库中的字符串，由字符串的值来确定调用哪一个方法来进行操作。我们不可避免的需要写if语句来匹配字符串，然后调用相应的函数。</p>
 <blockquote>
 <p>实际上在windows上，更方便而高效的是将要调用的方法都写在dll中，但项目进行到这个阶段，那些成群结队的方法早已经写好，封装成类，且被多个模块调用着，如果将之提取到dll，避免不了有大面积修改。于是，我只好尝试采用最笨拙的方法。</p>

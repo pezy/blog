@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="generator" content="nico 0.5.0">
+    <meta name="generator" content="nico 0.5.1">
     <meta name="theme" content="one 0.2">
     <title>井场实时数据采集器开发日志</title>
     <link rel="stylesheet" href="../static/one.css" />
@@ -16,17 +16,19 @@
         </div>
         <div class="menu" role="navigation">
           <a href="https://github.com/pezy/blog/wiki/..">Wiki</a>
-          <a href="../../../../../life">Life</a>
-          <a href="../../../../../work">Work</a>
-          <a href="../../../../../study">Study</a>
-          <a href="../../../../../essay">Essay</a>
-          <a href="../../../../../poem">听雨集</a>
+          <a href="../../life">Life</a>
+          <a href="../../work">Work</a>
+          <a href="../../study">Study</a>
+          <a href="../../essay">Essay</a>
+          <a href="../../poem">听雨集</a>
         </div>
       </div>
     </div>
     <div class="document yue">
 <div class="hentry" itemscope itemtype="http://schema.org/Article">
   <h1 class="entry-title" itemprop="name">井场实时数据采集器开发日志</h1>
+  <!--
+  <div class="entry-description" itemprop="description"><p>对MFC的疯狂吐槽</p></div>-->
   <div class="entry-content" itemprop="articleBody"><p>以前为了让DLL内部拥有更多的控制权，将采集间隔的控制放到了DLL中。但现在需要将实时数据显示出来，那么第一次调用DLL的时候，就无法立刻显示数据，而是需要等待一轮间隔时间。这就给用户造成一种很不灵敏的感觉。于是这次我将采<strong>集间隔的控制从新放回了DLL调用外部</strong>。</p>
 <p>采集器的开发基本告一段落。这一次完全是速成式的开发节奏。虽然我很小心翼翼的力图让代码结构清晰，功能明确，小巧易改。但是最终，在我五一放假归来后，嗅到了代码的臭味。</p>
 <p>是的，我的代码有了不好的味道。</p>

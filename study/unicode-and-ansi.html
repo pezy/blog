@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="generator" content="nico 0.5.0">
+    <meta name="generator" content="nico 0.5.1">
     <meta name="theme" content="one 0.2">
     <title>关于Unicode编码</title>
     <link rel="stylesheet" href="../static/one.css" />
@@ -16,17 +16,19 @@
         </div>
         <div class="menu" role="navigation">
           <a href="https://github.com/pezy/blog/wiki/..">Wiki</a>
-          <a href="../../../../../life">Life</a>
-          <a href="../../../../../work">Work</a>
-          <a href="../../../../../study">Study</a>
-          <a href="../../../../../essay">Essay</a>
-          <a href="../../../../../poem">听雨集</a>
+          <a href="../../life">Life</a>
+          <a href="../../work">Work</a>
+          <a href="../../study">Study</a>
+          <a href="../../essay">Essay</a>
+          <a href="../../poem">听雨集</a>
         </div>
       </div>
     </div>
     <div class="document yue">
 <div class="hentry" itemscope itemtype="http://schema.org/Article">
   <h1 class="entry-title" itemprop="name">关于Unicode编码</h1>
+  <!--
+  <div class="entry-description" itemprop="description"><p>闲时翻译</p></div>-->
   <div class="entry-content" itemprop="articleBody"><p>很多Windows\C++的初学者对于<code>TCHAR</code>, <code>LPCTSTR</code>这些怪异的符号很头疼。(我有一个能力很强的同事便是如此，甚至因为这个丧失了对Windows开发的兴趣，转去做Java了。)今天就把这些玩意一探究竟吧。</p>
 <h2 id="简述ansi与unicode">简述ANSI与Unicode</h2><p>显示某个字符，可以用单字节存储，也可以用双字节存储。前者便是我们常见的ANSI编码策略，适用于大多数的英系字符；后者则是Unicode编码策略，几乎可以用以表示世界上所有的文字。</p>
 <p>在VC++编译器中，对应于以上两种编码方式，分别给出了<code>char</code>与<code>wchar_t</code>两种数据类型。<em>Unicode</em>还有诸多好处，但现在仅需知道它作为一种双字节存储方式可以更好的支持Windows程序的国际化。</p>
@@ -72,7 +74,7 @@ typedef char TCHAR;
 </pre><p><strong>wc</strong>表示宽字符，可知<code>wcs</code>表示宽字符串，同理可知<code>_tcs</code>表示_T字符串，能猜到_T在逻辑上既代表<code>char</code>又代表<code>wchar_t</code>了吧？</p>
 <p>不过，实际上，<code>_tcslen</code>(还有其他<code>_tcs</code>前缀的函数)并<strong>不是</strong>一个拥有完整定义的真实函数，而仅仅是一个<strong>宏</strong>。其定义应该长这样子：</p>
 <pre>#ifdef _UNICODE
-#define _tcslen wcslen 
+#define _tcslen wcslen
 #else
 #define _tcslen strlen
 #endif
@@ -88,13 +90,13 @@ typedef char TCHAR;
 <pre>void _TPrintChar(wchar_t);
 
 </pre><p>该怎么办呢？单字节参数不会无缘无故的变成双字节。其实那是两个不同的函数：</p>
-<pre>void PrintCharA(char); // A = ANSI 
+<pre>void PrintCharA(char); // A = ANSI
 void PrintCharW(wchar_t); // W = Wide character
 
 </pre><p>如果定义一个宏，就轻而易举的解决了这个问题：</p>
 <pre>#ifdef _UNICODE
-void _TPrintChar(wchar_t); 
-#else 
+void _TPrintChar(wchar_t);
+#else
 void _TPrintChar(char);
 #endif
 
@@ -128,10 +130,10 @@ _T(&quot;Either string, depending on compilation&quot;); // ANSI or Unicode
 
 </pre><p>其中，无前缀的是ANSI字符串，<strong>L</strong>前缀的是Unicode字符串，以<code>_T</code>或<code>TEXT</code>标识的，将根据宏定义而定。还是一样，<code>_T</code>和<code>TEXT</code>只是宏而已，它们定义如下：</p>
 <pre>// SIMPLIFIED
-#ifdef _UNICODE 
+#ifdef _UNICODE
  #define _T(c) L##c
  #define TEXT(c) L##c
-#else 
+#else
  #define _T(c) c
  #define TEXT(c) c
 #endif
@@ -175,26 +177,26 @@ extern public static int SetWindowText(IntPtr hWnd, string lpString);
 <ul>
 <li><code>CreateProcess</code></li>
 <li><code>GetUserName</code></li>
-<li><code>OpenDesktop</code> </li>
-<li><code>DeleteFile</code> </li>
-<li>etc </li>
+<li><code>OpenDesktop</code></li>
+<li><code>DeleteFile</code></li>
+<li>etc</li>
 </ul>
 <p>这就是为何都推荐直接使用Unicode版本函数的原因了。不要仅仅因为多年的习惯，而固守ANSI不放，试着用Unicode来编译吧。但，我们可能还是会去存储或读取ANSI字符串，尤其在某些文件操作和消息传递中。这些转换函数还是有其存在的意义的。</p>
 <p><strong>注意</strong>：还有一种常见的定义类型：<strong><code>WCHAR</code></strong>，它等价于<code>wchar_t</code>。</p>
 <h2 id="更好的指针表示">更好的指针表示</h2><p><code>TCHAR</code>往往修饰单个字符，当然可以声明一个<code>TCHAR</code>的数组。如果你想表示一个<em>character-pointer</em>或一个<em>const-character-pointer</em>，会用下列哪一个呢？</p>
-<pre>// ANSI characters 
-foo_ansi(char*); 
-foo_ansi(const char*); 
-/*const*/ char* pString; 
+<pre>// ANSI characters
+foo_ansi(char*);
+foo_ansi(const char*);
+/*const*/ char* pString;
 
-// Unicode/wide-string 
-foo_uni(WCHAR*); 
-wchar_t* foo_uni(const WCHAR*); 
-/*const*/ WCHAR* pString; 
+// Unicode/wide-string
+foo_uni(WCHAR*);
+wchar_t* foo_uni(const WCHAR*);
+/*const*/ WCHAR* pString;
 
-// Independent 
-foo_char(TCHAR*); 
-foo_char(const TCHAR*); 
+// Independent
+foo_char(TCHAR*);
+foo_char(const TCHAR*);
 /*const*/ TCHAR* pString;
 
 </pre><p>看过<code>TCHAR</code>的解释，应该会很明确的选择最后一种了吧。那样表示字符串最有效。别忘了引入windows.h头文件。<strong>注意</strong>：如果你的项目直接或间接的引入了windows.h，就不需要引入<code>TCHAR.H</code>了。</p>
@@ -210,9 +212,9 @@ typedef const char* LPCSTR;
 
 </pre><p>其含义拆解如下：</p>
 <ul>
-<li><strong>LP</strong> – Long Pointer </li>
-<li><strong>C</strong> – Constant </li>
-<li><strong>STR</strong> – String </li>
+<li><strong>LP</strong> – Long Pointer</li>
+<li><strong>C</strong> – Constant</li>
+<li><strong>STR</strong> – String</li>
 </ul>
 <p><code>LPCSTR</code>的本质含义是指向固定字符串的(长)指针。</p>
 <p>用新的形式来表述<code>strcpy</code>就是：</p>
@@ -252,7 +254,7 @@ nLength = wcslen(L&quot;Unicode&quot;);
 <p>存在<code>wcs-</code>函数对应<code>str-</code>函数，前者处理Unicode字符串，后者处理ANSI字符串。</p>
 <p>虽然我已经建议过，直接用Unicode的函数替代ANSI与TCHAR的函数。原因很简单，应用程序是必须使用Unicode的，且无须考虑ANSI的兼容性。但出于完整性的考虑，还是继续说明对应的通TCHAR函数吧。</p>
 <p>计算字符串长度，可以用<strong><code>_tcslen</code></strong>函数(一个宏)。通常定义如下：</p>
-<pre>size_t _tcslen(const TCHAR* szString); 
+<pre>size_t _tcslen(const TCHAR* szString);
 </pre><p>或
     size_t _tcslen(LPCTSTR szString);</p>
 <p>这里的<strong><code>LPCTSTR</code></strong>可分解为：</p>
@@ -315,11 +317,11 @@ DWORD GetCurrentDirectory(DWORD nBufferLength,LPTSTR lpBuffer);
 </pre><p>继续说，你肯定见过某些函数/方法中需要传入<strong>字符数</strong>，或是返回字符数吧。譬如<code>GetCurrentDirectory</code>，你需要传入的是字符数，而<strong>不是</strong>字节数。例如：</p>
 <pre>TCHAR sCurrentDir[255];
 
-// Pass 255 and not 255*2 
+// Pass 255 and not 255*2
 GetCurrentDirectory(sCurrentDir, 255);
 
 </pre><p>而另一方面，如果你需要为数字或字符数组分配空间，则一定要分配整的字节数。在C++中，常使用<code>new</code>关键字：</p>
-<pre>LPTSTR pBuffer; // TCHAR* 
+<pre>LPTSTR pBuffer; // TCHAR*
 
 pBuffer = new TCHAR[128]; // Allocates 128 or 256 BYTES, depending on compilation.
 

@@ -7,7 +7,7 @@
  */
 
 .yue {
-  font: 400 18px/1.62 "Courier new", "Xin Gothic", "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft YaHei", "SimSun", sans-serif;
+  font: 400 18px/1.62 "Courier new", "Menlo", "Monaco", "SimSun", "monospace";
   color: #333332;
 }
 .yue ::selection {

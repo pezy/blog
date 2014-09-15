@@ -1,0 +1,286 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="generator" content="nico 0.5.1">
+    <meta name="theme" content="one 0.2">
+    <title>使用八叉树算法管理场景对象(用OpenSceneGraph实现)</title>
+    <link rel="stylesheet" href="../static/one.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="brand">
+          <a class="home" href="../">pezy's blog</a>
+        </div>
+        <div class="menu" role="navigation">
+          <a href="https://github.com/pezy/blog/wiki/..">Wiki</a>
+          <a href="../../life">Life</a>
+          <a href="../../work">Work</a>
+          <a href="../../study">Study</a>
+          <a href="../../essay">Essay</a>
+          <a href="../../poem">听雨集</a>
+        </div>
+      </div>
+    </div>
+    <div class="document yue">
+<div class="hentry" itemscope itemtype="http://schema.org/Article">
+  <h1 class="entry-title" itemprop="name">使用八叉树算法管理场景对象(用OpenSceneGraph实现)</h1>
+  <!--
+  <div class="entry-description" itemprop="description"><p>翻译自&quot;OpenSceneGraph 3 Cookbook Chapter 8&quot;某小节</p></div>-->
+  <div class="entry-content" itemprop="articleBody"><blockquote>
+<p>声明: 本文翻译自<a href="http://t.cn/Rhi9Dj7">OpenSceneGraph 3 Cookbook</a>中的Chapter 8某小节, 更多内容请购买该书查看.
+以下内容仅供学习之用, 禁止转载. 如有翻译错误之处, 请通过评论告之.</p>
+</blockquote>
+<p>在最后一个章节, 我们花了大量的时间讨论VPB地形模型的结构, 并且已经对四叉树场景图比较熟悉了.
+在LOD和paged LOD的帮助下, 我们可以用四叉树算法快速地管理地形板块, 无限制的渲染地形数据.
+事实上, 许多其他的应用也在处理海量数据时, 选用四叉树来管理场景, 例如城市建筑, 人群, 网络拓扑等.
+一个四叉树的内部节点恰好包含四个子节点, 所以它非常擅长管理XOY平面上的对象.</p>
+<p>那么如果我们要分割的是三维空间, 该怎么做呢? 例如, 如果我们有大量的球体随机的分布在三维空间里,
+应该使用一种高效的空间索引算法来管理它们呢? 有一种解决方案叫做<strong>八叉树</strong>. 这是另一种树状结构,
+其内部节点(3D区域)恰好有八个子区域, 如下图所示:</p>
+<p><img src="octree_note/octree.png" alt=""></p>
+<p>VPB使用一个二维的四叉树来组织地形, 类似的我们可以使用三维的八叉树来组织体数据或复杂场景(例如太阳系中的大量行星).
+在这个方案中, 我们将使用LOD节点来构造这样一个八叉树结构, 来渲染海量的球体元素. 这些球体将大小不一的随机分布在三维空间里.</p>
+<h2 id="实例剖析">实例剖析</h2><ol>
+<li>引入必要的头文件<div class="highlight"><pre><code class="cpp"><span class="preprocessor">#include &lt;osg/PolygonMode&gt;</span>
+<span class="preprocessor">#include &lt;osg/ShapeDrawable&gt;</span>
+<span class="preprocessor">#include &lt;osg/Geometry&gt;</span>
+<span class="preprocessor">#include &lt;osg/Geode&gt;</span>
+<span class="preprocessor">#include &lt;osg/LOD&gt;</span>
+<span class="preprocessor">#include &lt;osgDB/ReadFile&gt;</span>
+<span class="preprocessor">#include &lt;osgUtil/PrintVisitor&gt;</span>
+<span class="preprocessor">#include &lt;osgViewer/ViewerEventHandlers&gt;</span>
+<span class="preprocessor">#include &lt;osgViewer/Viewer&gt;</span>
+<span class="preprocessor">#include &lt;iostream&gt;</span>
+<span class="preprocessor">#include &lt;fstream&gt;</span>
+<span class="preprocessor">#include &lt;sstream&gt;</span></code></pre></div></li>
+<li>首先声明一个<code>OctreeBuilder</code>类, 它将使用<strong>八叉树</strong>算法来构造一个场景图.
+使用<code>setMaxChildNumber()</code>方法设定一个叶子节点中包含多少个geometries(默认为16个).
+使用<code>setMaxTreeDepth()</code>方法设定八叉树最大层次数目(默认为32个).<div class="highlight"><pre><code class="cpp"><span class="keyword">class</span> OctreeBuilder
+{
+<span class="keyword">public</span>:
+    OctreeBuilder() : _maxChildNumber(<span class="number">16</span>), _maxTreeDepth(<span class="number">32</span>), _maxLevel(<span class="number">0</span>) {}
+    <span class="keyword">int</span> getMaxLevel() <span class="keyword">const</span> { <span class="keyword">return</span> _maxLevel; }
+    <span class="keyword">void</span> setMaxChildNumber( <span class="keyword">int</span> max ) { _maxChildNumber= max; }
+    <span class="keyword">int</span> getMaxChildNumber() <span class="keyword">const</span> { <span class="keyword">return</span> _maxChildNumber; }
+    <span class="keyword">void</span> setMaxTreeDepth( <span class="keyword">int</span> max ) { _maxTreeDepth = max; }
+    <span class="keyword">int</span> getMaxTreeDepth() <span class="keyword">const</span> { <span class="keyword">return</span> _maxTreeDepth; }
+    <span class="keyword">typedef</span> <span class="built_in">std</span>::pair&lt;<span class="built_in">std</span>::<span class="built_in">string</span>, osg::BoundingBox&gt; ElementInfo;
+    osg::Group* build( <span class="keyword">int</span> depth, <span class="keyword">const</span> osg::BoundingBox&amp; total,
+      <span class="built_in">std</span>::<span class="stl_container"><span class="built_in">vector</span>&lt;ElementInfo&gt;</span>&amp; elements );
+<span class="keyword">protected</span>:
+    osg::LOD* createNewLevel(<span class="keyword">int</span> level, <span class="keyword">const</span> osg::Vec3&amp; center, <span class="keyword">float</span> radius);
+    osg::Node* createElement(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; id, <span class="keyword">const</span> osg::Vec3&amp; center,
+      <span class="keyword">float</span> radius );
+    osg::Geode* createBoxForDebug(<span class="keyword">const</span> osg::Vec3&amp; max, <span class="keyword">const</span> osg::Vec3&amp; min);
+    <span class="keyword">int</span> _maxChildNumber;
+    <span class="keyword">int</span> _maxTreeDepth;
+    <span class="keyword">int</span> _maxLevel;
+};</code></pre></div></li>
+<li><code>build()</code>方法将被递归的调用, 来创建八叉树的每一层级. 调用时可以将深度设为0, total指定为包围球,
+elementes包含巨大场景中的全部元素.<div class="highlight"><pre><code class="cpp">osg::Group* OctreeBuilder::build(<span class="keyword">int</span> depth, <span class="keyword">const</span> osg::BoundingBox&amp; total,
+    <span class="built_in">std</span>::<span class="stl_container"><span class="built_in">vector</span>&lt;ElementInfo&gt;</span>&amp; elements)
+{
+    ...
+}</code></pre></div></li>
+<li>我们用两个长度为3的数组来计算区域的基本属性. <code>s[]</code>表示八叉树每一个层次的全部八个元件. 数组中的值只能为0或1,
+用此来描述每个元件是在X/Y/Z三个轴的左边还是右边. <code>extentSet[]</code> 记录了这个层次区域的最小, 中间, 最大的点坐标,
+它后续将用来计算其孩子节点的区域.<div class="highlight"><pre><code class="cpp"><span class="keyword">int</span> s[<span class="number">3</span>]; <span class="comment">// axis sides (0 or 1)</span>
+osg::Vec3 extentSet[<span class="number">3</span>] = {
+    total._min,
+    (total._max + total._min) * <span class="number">0.5f</span>,
+    total._max
+};</code></pre></div></li>
+<li><code>elements</code>包含了场景中的全部元素, 因此我们可以找出那些在当前区域<code>total</code>中, 并将它们存储在一个临时列表(<code>childData</code>)里.
+如果当前区域的元素少到仅能组成一个叶子节点, 将<code>isLeafNode</code>设为true. 否则设为false, 以继续将区域细分为下一个层次的8个子节点.<div class="highlight"><pre><code class="cpp"><span class="built_in">std</span>::<span class="stl_container"><span class="built_in">vector</span>&lt;ElementInfo&gt;</span> childData;
+<span class="keyword">for</span> ( <span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>; i&lt;elements.size(); ++i )
+{
+    <span class="keyword">const</span> ElementInfo&amp; obj = elements[i];
+    <span class="keyword">if</span> ( total.contains(obj.second._min) &amp;&amp; total.contains(obj.second._max) )
+        childData.push_back( obj );
+    <span class="keyword">else</span> <span class="keyword">if</span> ( total.intersects(obj.second) )
+    {
+      osg::Vec3 center = (obj.second._max + obj.second._min) * <span class="number">0.5f</span>;
+      <span class="keyword">if</span> ( total.contains(center) )
+        childData.push_back( obj );
+    }
+}
+<span class="keyword">bool</span> isLeafNode = <span class="keyword">false</span>;
+<span class="keyword">if</span> ( (<span class="keyword">int</span>)childData.size()&lt;=_maxChildNumber || depth&gt;_maxTreeDepth )
+    isLeafNode = <span class="keyword">true</span>;
+osg::ref_ptr&lt;osg::Group&gt; group = <span class="keyword">new</span> osg::Group;
+<span class="keyword">if</span> ( !isLeafNode )
+{
+    ...
+}
+<span class="keyword">else</span>
+{
+    ...
+}</code></pre></div></li>
+<li>如果<code>isLeafNode</code>为假, 我们将不得不建立包含了八个新的子区域的下一层次区域盒.
+这些子区域使用<code>osg::Group</code>创建, 并加到父节点中. <code>build</code>方法将通过不同的区域参数被递归地调用,
+用以检查和建立子图.<div class="highlight"><pre><code class="cpp">osg::ref_ptr&lt;osg::Group&gt; childNodes[<span class="number">8</span>];
+<span class="keyword">for</span> ( s[<span class="number">0</span>]=<span class="number">0</span>; s[<span class="number">0</span>]&lt;<span class="number">2</span>; ++s[<span class="number">0</span>] )
+{
+    <span class="keyword">for</span> ( s[<span class="number">1</span>]=<span class="number">0</span>; s[<span class="number">1</span>]&lt;<span class="number">2</span>; ++s[<span class="number">1</span>] )
+    {
+      <span class="keyword">for</span> ( s[<span class="number">2</span>]=<span class="number">0</span>; s[<span class="number">2</span>]&lt;<span class="number">2</span>; ++s[<span class="number">2</span>] )
+      {
+        osg::Vec3 min, max;
+        <span class="keyword">for</span> ( <span class="keyword">int</span> a=<span class="number">0</span>; a&lt;<span class="number">3</span>; ++a )
+        {
+          min[a] = (extentSet[s[a] + <span class="number">0</span>])[a];
+          max[a] = (extentSet[s[a] + <span class="number">1</span>])[a];
+        }
+        <span class="keyword">int</span> id = s[<span class="number">0</span>] + (<span class="number">2</span> * s[<span class="number">1</span>]) + (<span class="number">4</span> * s[<span class="number">2</span>]);
+          childNodes[id] = build(depth+<span class="number">1</span>, osg::BoundingBox(min, max), childData);
+      }
+    }
+}
+<span class="keyword">for</span> ( <span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">8</span>; ++i )
+{
+    <span class="keyword">if</span> (childNodes[i] &amp;&amp; childNodes[i]-&gt;getNumChildren())
+      group-&gt;addChild( childNodes[i] );
+}</code></pre></div></li>
+<li>如果当前节点可作为八叉树中的叶子节点, 我们只要调用<code>createElement()</code>来生成球体并设置一些必要的参数来渲染它.
+这些可渲染的元素将被加到<code>osg::Group</code>中, 用以呈现八叉树的叶子节点.<div class="highlight"><pre><code class="cpp"><span class="keyword">for</span> ( <span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>; i&lt;childData.size(); ++i )
+{
+    <span class="keyword">const</span> ElementInfo&amp; obj = childData[i];
+    osg::Vec3 center = (obj.second._max + obj.second._min) * <span class="number">0.5</span>;
+    <span class="keyword">float</span> radius = (obj.second._max - obj.second._min).length() * <span class="number">0.5f</span>;
+    group-&gt;addChild(createElement(obj.first, center, radius));
+}</code></pre></div></li>
+<li><code>build()</code>方法的最后一个步骤, 是使用<code>osg::LOD</code>来完成当前层次的构建. 当视线远离场景时,
+它包含一个示意盒(或什么也没有)来粗略表示. 只有视线足够靠近, 才会既包含八个子节点, 又包含一些叶子节点.
+其中将出现少量的球体, 这取决于<code>_maxChildNumber</code>的值了.<div class="highlight"><pre><code class="cpp">osg::Vec3 center = (total._max + total._min) * <span class="number">0.5</span>;
+<span class="keyword">float</span> radius = (total._max - total._min).length() * <span class="number">0.5f</span>;
+osg::LOD* level = createNewLevel( depth, center, radius );
+<span class="comment">// For debug use</span>
+level-&gt;insertChild( <span class="number">0</span>, createBoxForDebug(total._max, total._min) );
+level-&gt;insertChild( <span class="number">1</span>, group.get() );
+<span class="keyword">return</span> level;</code></pre></div></li>
+<li><code>createNewLevel()</code>方法用于创建自定义LOD节点.<div class="highlight"><pre><code class="cpp">osg::LOD* OctreeBuilder::createNewLevel( <span class="keyword">int</span> level, <span class="keyword">const</span>
+    osg::Vec3&amp; center, <span class="keyword">float</span> radius )
+{
+    osg::ref_ptr&lt;osg::LOD&gt; lod = <span class="keyword">new</span> osg::LOD;
+    lod-&gt;setCenterMode( osg::LOD::USER_DEFINED_CENTER );
+    lod-&gt;setCenter( center );
+    lod-&gt;setRadius( radius );
+    lod-&gt;setRange( <span class="number">0</span>, radius * <span class="number">5.0f</span>, FLT_MAX );
+    lod-&gt;setRange( <span class="number">1</span>, <span class="number">0.0f</span>, radius * <span class="number">5.0f</span> );
+    <span class="keyword">if</span> ( _maxLevel&lt;level ) _maxLevel = level;
+    <span class="keyword">return</span> lod.release();
+}</code></pre></div></li>
+<li><code>createElement()</code>方法创建并返回可渲染的球体.<div class="highlight"><pre><code class="cpp">osg::Node* OctreeBuilder::createElement( <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp;
+    id, <span class="keyword">const</span> osg::Vec3&amp; center, <span class="keyword">float</span> radius )
+{
+    osg::ref_ptr&lt;osg::Geode&gt; geode = <span class="keyword">new</span> osg::Geode;
+    geode-&gt;addDrawable( <span class="keyword">new</span> osg::ShapeDrawable(<span class="keyword">new</span>
+    osg::Sphere(center, radius)) );
+    geode-&gt;setName( id );
+    <span class="keyword">return</span> geode.release();
+}</code></pre></div></li>
+<li><code>createBoxForDebug()</code>将创建一个线状的盒子, 用于表示区域的包围盒. 它只是为了方便调试.<div class="highlight"><pre><code class="cpp">osg::Geode* OctreeBuilder::createBoxForDebug(<span class="keyword">const</span> osg::Vec3&amp; max,
+    <span class="keyword">const</span> osg::Vec3&amp; min)
+{
+    ... <span class="comment">// Please see source code for details</span>
+}</code></pre></div></li>
+<li>我们还实现了一个打印访问器, 可以将场景结构, 叶子球体的名称存储到文件中. 它从<code>osgUtil::PrintVisitor</code>派生而来. 足够用了.<div class="highlight"><pre><code class="cpp"><span class="keyword">class</span> PrintNameVisitor : <span class="keyword">public</span> osgUtil::PrintVisitor
+{
+<span class="keyword">public</span>:
+PrintNameVisitor( <span class="built_in">std</span>::ostream&amp; out ) :
+    osgUtil::PrintVisitor(out) {}
+    <span class="keyword">void</span> apply( osg::Node&amp; node )
+    {
+      <span class="keyword">if</span> ( !node.getName().empty() )
+      {
+        output() &lt;&lt; node.getName() &lt;&lt; <span class="built_in">std</span>::endl;
+        enter();
+        traverse( node );
+        leave();
+      }
+      <span class="keyword">else</span> osgUtil::PrintVisitor::apply(node);
+    }
+};</code></pre></div></li>
+<li>我们几乎要完成了. 现在, 在主函数里, 我们将5000个大小和位置都不同的球体, 加到<code>globalElements</code>中.
+同时将计算整体的包围盒. 然后, 就可以调用<code>build()</code>方法来创建顶层的八叉树图了.<div class="highlight"><pre><code class="cpp">osg::BoundingBox globalBound;
+<span class="built_in">std</span>::<span class="stl_container"><span class="built_in">vector</span>&lt;OctreeBuilder::ElementInfo&gt;</span> globalElements;
+<span class="keyword">for</span> ( <span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">5000</span>; ++i )
+{
+    osg::Vec3 pos = osgCookBook::randomVector(-<span class="number">500.f</span>,<span class="number">500.f</span>);
+    <span class="keyword">float</span> radius = osgCookBook::randomValue( <span class="number">0.5f</span>, <span class="number">2.0f</span> );
+    <span class="built_in">std</span>::<span class="built_in">stringstream</span> ss; ss &lt;&lt; <span class="string">"Ball-"</span> &lt;&lt; i+<span class="number">1</span>;
+    osg::Vec3 min = pos - osg::Vec3(radius, radius, radius);
+    osg::Vec3 max = pos + osg::Vec3(radius, radius, radius);
+    osg::BoundingBox region(min, max);
+    globalBound.expandBy( region );
+    globalElements.push_back(OctreeBuilder::ElementInfo(ss.str(), region));
+}
+OctreeBuilder octree;
+osg::ref_ptr&lt;osg::Group&gt; root = octree.build(<span class="number">0</span>, globalBound, globalElements);</code></pre></div></li>
+<li>将生成的场景图存储到ASCII文件中, 并开启<code>viewer</code>渲染整个巨大的场景.<div class="highlight"><pre><code class="cpp"><span class="built_in">std</span>::ofstream out(<span class="string">"octree_output.txt"</span>);
+PrintNameVisitor printer( out );
+root-&gt;accept( printer );
+osgViewer::Viewer viewer;
+viewer.setSceneData( root.get() );
+viewer.addEventHandler( <span class="keyword">new</span> osgViewer::StatsHandler );
+<span class="keyword">return</span> viewer.run();</code></pre></div></li>
+<li>当应用启动时, 视线所及仅能看到一个盒子, 随着视角的不断推进, 你将看到盒子不断细分, 推进到最后,
+足够靠近那些球体时, 你将看到叶子节点中的球体也会呈现出来. 如下图所示:</li>
+</ol>
+<p><img src="octree_note/result.png" alt=""></p>
+<h2 id="深入分析">深入分析</h2><p>如果打开输出文件(应用每运行一次都会生成), 粘贴一部分如下:</p>
+<pre>osg::LOD
+    osg::Geode
+    osg::Group
+      osg::LOD
+        osg::Geode
+        osg::Group
+          Ball-438
+          …
+      osg::LOD
+        osg::Geode
+        osg::Group
+          Ball-729
+          …
+      osg::LOD
+      …</pre><p>以Ball-*为名的节点是必须在场景中渲染的球体. 从之前的代码里可以得知, 球节点存储在Group节点中(八叉树的叶子节点),
+Group节点是LOD更精细的一层. LOD节点有自身的位置和半径, 并会根据中心与眼睛的距离来决定子叶子是否显示出来.</p>
+<p>同一层次的每八个LOD节点会组成一个Group节点, 作为上层LOD节点更精细的一层. 这就是八叉树的实际结构.
+所有LOD的粗略层都会用线框盒(osg::Geode)来表现.</p>
+<h2 id="更多内容">更多内容</h2><p>你会发现用四叉树, 八叉树这样的索引算法来集成场景图并不复杂. 在这一节里, 我们仅仅用<code>osg::LOD</code>节点来管理树的不同层次,
+但更好的选择应该是<code>osg::PagedLOD</code>来为巨大场景的渲染提供分页功能. 就像<strong>VPB</strong>管理地形数据库那样.</p>
+<p>你可能会对一些其他的空间索引算法感兴趣, 以下是他们的介绍链接:</p>
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Binary_space_partitioning">二叉空间分割(BSP)</a></li>
+<li><a href="http://en.wikipedia.org/wiki/K-d_tree">K-dimensional tree(KDTree)</a></li>
+<li><a href="http://en.wikipedia.org/wiki/R-tree">R-Tree</a></li>
+</ul>
+<p>试着用这些个方法来实现场景图结构. 你不仅可以用他们来<strong>抽稀</strong>渲染对象, 还可以更快的判断场景对象与线段(或其他操作)<strong>是否相交</strong>.</p>
+<p><em>-EOF-</em></p>
+</div>
+
+  <div class="entry-meta">
+    <time class="updated" datetime="2014-09-15T00:00:00.000Z" itemprop="dateModified">Monday, Sep 15th, 2014</time>
+  </div><div class="ds-thread"></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"pezy"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+</div>
+</div>
+    <div class="footer">
+    </div>
+    <div class="github"><a class="github-link" href="https://github.com/pezy">Fork me on GitHub</a></div>
+    <script src="../static/one.js"></script>
+  </body>
+</html>

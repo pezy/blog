@@ -125,24 +125,17 @@
 }
 .yue code,
 .yue tt {
-  color: #808080;
+  color: #d14;
   font-size: 0.96em;
-  background-color: #f9f9f7;
-  padding: 1px 2px;
-  border: 1px solid #dadada;
-  border-radius: 3px;
   font-family: "Courier new", "Menlo", monospace;
 }
 .yue pre {
   padding: 7px;
-  border: 1px solid #dadada;
-  border-radius: 4px;
   overflow: auto;
   line-height: 1.5;
-  font-size: 0.96em;
+  font-size: 0.16em;
   font-family: "Courier new", "Menlo", monospace;
   color: #4c4c4c;
-  background-color: #f9f9f7;
 }
 .yue pre code,
 .yue pre tt {
@@ -257,18 +250,10 @@ pre .prompt {
 }
 
 pre .built_in,
+pre .cpp .string,
 pre .lisp .title,
 pre .clojure .built_in {
   color: #0086b3
-}
-
-pre .preprocessor,
-pre .pi,
-pre .doctype,
-pre .shebang,
-pre .cdata {
-  color: #999;
-  font-weight: bold
 }
 
 pre .deletion {
@@ -286,6 +271,7 @@ pre .diff .change {
 pre .chunk {
   color: #aaa
 }
+
 html, body {
   padding: 0;
   margin: 0;

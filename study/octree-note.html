@@ -40,7 +40,7 @@
 <p>那么如果我们要分割的是三维空间, 该怎么做呢? 例如, 如果我们有大量的球体随机的分布在三维空间里,
 应该使用一种高效的空间索引算法来管理它们呢? 有一种解决方案叫做<strong>八叉树</strong>. 这是另一种树状结构,
 其内部节点(3D区域)恰好有八个子区域, 如下图所示:</p>
-<p><img src="https://db.tt/0EToU8R8" alt="octree"></p>
+<p><img src="https://dl.dropboxusercontent.com/u/43678603/blog_images/octree.png" alt="octree"></p>
 <p>VPB使用一个二维的四叉树来组织地形, 类似的我们可以使用三维的八叉树来组织体数据或复杂场景(例如太阳系中的大量行星).
 在这个方案中, 我们将使用LOD节点来构造这样一个八叉树结构, 来渲染海量的球体元素. 这些球体将大小不一的随机分布在三维空间里.</p>
 <h2 id="实例剖析">实例剖析</h2><ol>
@@ -230,7 +230,7 @@ viewer.addEventHandler( <span class="keyword">new</span> osgViewer::StatsHandler
 <li>当应用启动时, 视线所及仅能看到一个盒子, 随着视角的不断推进, 你将看到盒子不断细分, 推进到最后,
 足够靠近那些球体时, 你将看到叶子节点中的球体也会呈现出来. 如下图所示:</li>
 </ol>
-<p><img src="https://db.tt/E0C9Agtb" alt="result"></p>
+<p><img src="https://dl.dropboxusercontent.com/u/43678603/blog_images/octree_result.png" alt="result"></p>
 <h2 id="深入分析">深入分析</h2><p>如果打开输出文件(应用每运行一次都会生成), 粘贴一部分如下:</p>
 <pre>osg::LOD
     osg::Geode

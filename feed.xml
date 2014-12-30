@@ -5,6 +5,105 @@
     <link href="" />
     <id>feed.xml</id>
     <entry>
+        <title type="html"><![CDATA[2014年终总结]]></title>
+        <link href="life/summary-2014"/>
+        <published>2014-12-30T00:00:00.000Z</published>
+        <updated>2014-12-30T00:00:00.000Z</updated>
+        <id>life/summary-2014</id>
+        <content type="html" xml:base="" xml:lang="en">
+            <![CDATA[ <p>从 2012 年开始，我便开始每年都写年终总结，去年东施效颦某些前端大牛，将一篇洋洋洒洒的总结写在了 Github 的 issue 里，随着某次情绪不稳定，删掉了该 repo 之后，才发现 issue 并不提供 git 机制，悔恨不已。
+从而莫名其妙的丢掉了一年的总结，每每想到这件事，就感觉仿佛 2013 年未曾活过一般。</p>
+<p>但实际上，2013 年也的确没有 <a href="end-of-2012">2012 年</a>那么曲折，也没有 2014 年这般炼狱。</p>
+<p>何谓炼狱？说来话长，今年大体可分为两个阶段:</p>
+<ol>
+<li>继续给<a href="../work/thinking-of-das">采集</a>擦屁股</li>
+<li>进入<a href="../work/needdepth">三维图形</a>领域</li>
+</ol>
+<p>第一阶段，恰为上半年，约莫到4月中旬；第二阶段从5月开始，直到年末。</p>
+<p>如果说去年对于<a href="../work/thinking-of-das">数据采集</a>的总结，达到了我个人对于这部分工作理解之高峰的话，后续的工作只能称得上是一路滑向山谷。这也是当一个软件逐步做大，参与的人员逐步变多，所带来的必然结果。
+第一版与第二版，几乎是我一个人把控，只需要做好<strong>KISS</strong>的原则即可。而到了第三版，领导决定对其增加许多额外的功能与职责，并举全组之力，希望其能够称之为一个完整的解决方案，坚持<strong>KISS</strong>就显得有些不切实际了。
+只记得在 2013 年 10 月到 12 月份，无尽的讨论并未产生良好的设计，而是诞生了一个不断妥协的结果：与上层接口的妥协，与调用方的妥协，与领导的妥协，与行业经典软件的妥协。可以想象这样一个怪东西会有怎样的结局了。</p>
+<p>所以到了 2014 年，我过足了&quot;设计的瘾&quot;，开始回归到具体实现上来了。说说接触到的一些新的尝试：</p>
+<ol>
+<li>在 MFC 中，界面美化一直是一个繁复的过程，我时常倾羡一些成熟软件的外观，直到我看到了<a href="http://blog.sina.com.cn/s/blog_a6fb6cc90101g0p8.html">这篇文章</a>。从此发现 Qt 的威力，模仿并草创了采集的主体界面。</li>
+<li>如何实现 C/S 程序与 B/S 程序的交互？(也可以理解为 C++ 与 Java Web 的交互)，我接触到了<a href="http://www.cs.fsu.edu/~engelen/soap.html">gSOAP</a>，明白了如何用 C++ 来写 Web Service.</li>
+<li>几个小玩意：C/S 集成页面，即集成多个 exe 到一个应用中；单位换算机制，即公制-英制-自定义单位的快速转换。</li>
+<li>丰富 DAS 采集框架，主要完善消息总线的设计，尽可能的简化结构，去除不必要的内部消耗。这里面我温习了不少设计模式的知识，深入了解了观察者模式与工厂系的模式。</li>
+</ol>
+<p>其余的工作便是改 Bug，完善底层架构，改 Bug，完善。。。</p>
+<p>这个阶段应该算是对三年采集工作的一次梳理和总结，另外也尝了 Qt 的鲜，真正做到了<a href="../work/about-collector">彻底摆脱 MFC</a>，同时了解了一些关于 Web Service 协议的东西。</p>
+<p>这个阶段，我应该算是全力扑在了工作上，但由于工作中需要将以往的仪器的适配 DLL 全部从 C++ 改为纯 C 语言，所以业余时间我也开始重读 <a href="http://book.douban.com/subject/1139336/">C 程序设计语言</a>，第一次开始认真做习题。</p>
+<hr>
+<p>第二阶段，实际从 3 月份即开始蠢蠢欲动了，但直到 4 月中旬这事才板上钉钉，那次 <a href="../work/needdepth">工作变动</a> 对我真的影响很大。我开始比较正式的学习 Qt 与 OSG，从 2D 绘图开始，到 3D 中画出第一个球体。
+这部分经历记忆犹新，不同于以前应用软件设计的领域，图形学对我来说，真的是完全陌生。其中的压力与艰辛，实在只能意会不可言传。也正是从那时起，我开始混迹知乎，读 <a href="http://book.douban.com/subject/3173123/">C++ GUI Qt4编程</a>。</p>
+<p>期间慢慢适应了新的工作环境，但也遭遇了史上最低的一次绩效考核，情绪波动很大，很长时间里非常自暴自弃，认定自己是个 loser，现在想想有些可笑，但负面的情绪不仅影响了工作热情，也影响了生活，甚至影响了与女友的关系。</p>
+<p>而一次非常意外的<a href="https://gist.github.com/pezy/9ecd15a4ab7a543f02bc">脑子犯二经历</a>，让我重新捡起了 <a href="http://book.douban.com/subject/24089577/">C++ Primer</a> 这本神奇的书。
+又让我知道了王月的那个<a href="https://github.com/Mooophy">习题答案的 repo</a>，于是约莫从八月开始，我便开始认真阅读该书，并尽量完整的补充<a href="https://github.com/pezy/Cpp-Primer">习题答案</a>。</p>
+<p>最初，这件事对于我的意义可能只是烦闷工作的一个消遣，也同时能够满足我长期以来跃跃欲试的&quot;编纂情节&quot;，我曾为其设计了漂亮的 web 页面，包括设置了评论框，连字体、CSS 样式，都是花过心思的。
+但后来随着我越来越深入的了解 C++ 11 的新规范，才发现了一个全新的世界，并清晰的看到自己基础的薄弱。以至于后来我撤掉了华丽的 web 页面，踏踏实实的研究 C++ 本身，并从始至终的贯彻书中作者无意间提到的一句名言：</p>
+<blockquote>
+<p>Brevity Can Be a Virtue</p>
+</blockquote>
+<p>也是从那时起，我开始打理<a href="http://www.douban.com/people/pezy/">我的豆瓣主页</a>, 粗略的模仿王月的读书进度条(现在已经撤掉了)，并开始写 C++ Primer 的读书笔记。
+正如我在<a href="http://www.zhihu.com/question/19599607/answer/28751194">某个答案</a>的最后所说，我始终相信，能够啃下大砖头的人，必然是人中龙凤，而我当时竟没曾预料到这么快就遇上了一个。
+这对于我有很大的触动，于是，很庆幸，我没有再一次中途放弃，而是坚持将这个计划继续了下去。虽然进展很缓慢，截止到今天，整整 4 个月，我才进展到 12 章，其中有过烦闷，欢心，自怨，骄傲，等等心绪。</p>
+<p>有了第一次义无反顾的坚持，第二次便来的很容易，从 10 月 15 日开始，我开始每天一道 <a href="https://github.com/pezy/LeetCode">LeetCode</a>，起初这也只是一种好奇驱动而已。
+但随着题量的提升，涉及到数据结构、算法等等一系列知识时，我才真正的明白面试题的意义（以往我是对此深恶痛绝的）。做这个的时候我也是无意间列了一个<a href="https://github.com/pezy/LeetCode#leetcode">时间表</a>，
+而截止到今天，我竟然依然按照该表在执行。</p>
+<p>上述两件事，对于其他人并没有什么太大的意义，但对于我来说，却是非常大的改变。<strong>我从来就不是一个善于坚持的人</strong>，有生以来，我唯一坚持做下来的事情，也许就是上述两件了。
+这对于 C++ 、数据结构、算法的学习可能微不足道，而对于个人修身的影响却是巨大的。<a href="http://macshuo.com/">MacTalk</a> 的池大大曾表示，每天坚持写 MacTalk ，看似是一件小事，却非常的不易。我也是至今才能够深刻体会。</p>
+<p>更不用说这两件事带给我其他的好处了，捡重点说两个吧：</p>
+<ol>
+<li>我已经离不开 Github 了，并在上面认识了很多厉害的朋友。</li>
+<li>我竟然开始学着使用 StackOverflow 了，长期以来我都是该站的得益者，今年我成为了一个贡献者。</li>
+</ol>
+<p>另外的一些变化还在于：</p>
+<ul>
+<li>我越来越不喜欢夸夸其谈，喜欢用代码说话，可以看到知乎上我早期的答题都是谈经验，后来都是直接拼代码，后者是需要勇气的，因为是毫不遮掩的接受大家的批评。</li>
+<li>我从忽略C++基础语法问题，到后来非常喜欢回答C++基础语法问题，再到现在不愿花功夫回答基础语法问题。(倒是有点看山不是山的感觉)</li>
+<li>我从喜欢刷微博刷知乎，变的喜欢刷 StackOverflow 和 segmentfault，当然后者并未发展起来，但我已经贡献了许多答案了。</li>
+</ul>
+<p>相比之下，这个阶段我的工作倒是显得不怎么出彩了，期间重点研究的 LOD 与 <a href="../study/octree-note">Octree</a> 问题到现在也没有太多的头绪，倒是因为解决了几个其他的三维显示问题，从而拿到了公司内部的一个小奖(技术达人)。
+其奖金还算丰厚，也弥补了一点绩效不好看的遗憾。</p>
+<hr>
+<p>最后一部分总结，要留给一直陪伴我的女友。今年我们一起走过了<a href="http://love.pezy.me/">相识的第二个年头</a>。上面提到的那本 C++ Primer 5th 的英文原版，就是她从英国给我带回来的，很惭愧，那时国内该书还未曾有中文版，
+而她得知我是搞 C++ 的，便偷偷给我买了此书，那时我便发誓要将此书读个通透，没想到今年才开始行动。也是她，帮助我克服了对于大部头英语的恐惧，对于英语书写的恐惧，甚至是口语上的恐惧。</p>
+<p>我想，英语对于一个程序员的意义，是不言而喻的。同理，她对于我的意义，也是无法估量的。</p>
+<p>生活里的我向来笨手笨脚，这一点给她带来了不少烦恼。她是一个在生活上很会花心思的人，而我则基本是个执着的工作狂，如此直接的矛盾，给我俩带来了不少争吵，最终都以我死皮赖脸的道歉结束。
+后来我们曾沟通多次，我才逐渐开始意识到自己这样&quot;忙碌&quot;的生活本质上是一种无序的混乱以及思维的懒惰。我开始关注极简主义，开始逐步砍掉一些无意义的事情。这对于我来说，算是一个不小的考验，毕竟积习难改。
+但我已将之作为我明年的目标。规律化的生活，分配好各项事宜的时间，应该算是一项成熟的标志。</p>
+<p>她对我的影响，往往是润物细无声的，从穿着打扮，到饮食习惯，再到对品质的追求。而最大的影响，是让我看到了更大的世界，听到了更多不同的声音，从以往的一意孤行，到现在的包容并蓄，这都是她给我带来的宝贵财富。
+我的蠢笨与她的聪颖，以及完全截然不同的两种性格，竟然走到一起两年之久，也不得不叹服缘分的力量了。</p>
+<p>最后，虽然有很多现实问题摆在我俩面前，但我还是希望今年能够缘上加缘，携手组建一个温馨的家庭。</p>
+<hr>
+<p>今年的吃过的亏很多，教训也很多，主要体现在以下几条：</p>
+<ol>
+<li>注意<strong>时间陷阱</strong>，要善于给自己设置时间节点，切记不要无休无止。</li>
+<li>注意判断<strong>取舍</strong>，什么该做，什么不该做，有自己的标准。这一点直接影响上面的时间陷阱。</li>
+<li>注意<strong>读书方法</strong>，第一遍尽量利用(kindle + 闲散时间)，标记重点；第二遍针对重点温习；然后实践中验证。</li>
+<li>注意<strong>抓住本质</strong>，学习不是为了克服遗忘，而是为了遗忘。遗忘形式上的东西，把握核心本质。</li>
+<li>注意<strong>归纳总结</strong>，今年的总结还是不够，总结代表思考，不经总结的学习，像是用漏斗乘沙。</li>
+<li>注意<strong>还是坚持</strong>，坚持带来的最大的好处，是心态的稳定，不以物喜，不以己悲，按部就班做好该做的。</li>
+</ol>
+<p>这是今年仍有欠缺的地方，明年继续努力。</p>
+<hr>
+<p>明年学习计划：</p>
+<ul>
+<li>力求在 3 月底，完成 <a href="https://github.com/pezy/Cpp-Primer">C++ Primer</a> + <a href="https://github.com/pezy/LeetCode">LeetCode</a> 两个项目</li>
+<li>力求在上半年，完成对线性代数及相关数学知识的复习，并牢固掌握 OpenGL 的基础知识。</li>
+<li>多一个坚持：每周一篇技术博客。</li>
+<li>力求在年底前，看完三本书：CSAPP + SICP + CLRS</li>
+<li>学历提升，与换工作，二选一。</li>
+<li>可选:<ul>
+<li>借 WebGL，深入学习 JavaScript</li>
+<li>几个 MIT 的课程</li>
+<li>学习 python.</li>
+</ul>
+</li>
+</ul>
+]]>
+        </content>
+    </entry><entry>
         <title type="html"><![CDATA[使用八叉树算法管理场景对象(用OpenSceneGraph实现)]]></title>
         <link href="study/octree-note"/>
         <published>2014-09-15T00:00:00.000Z</published>
@@ -1030,316 +1129,6 @@ Group节点是LOD更精细的一层. LOD节点有自身的位置和半径, 并�
 <h2 id="这就完了么？">这就完了么？</h2><p>额，准确的说，上述这点玩意儿，只是最最最基本的操作。不过完全可以看出<code>CMarkup</code>类的便捷简单了吧？利用<code>CMarkup</code>操作XML虽说已经是很成熟的技术了，但它的功能并不是太全面。这只是一种轻量级的工具，合适与否完全看个人需求了。更多的方法API请见<a href="http://www.firstobject.com/dn_markupmethods.htm">这里</a>。</p>
 <h2 id="参考资料">参考资料</h2><p>[1] <a href="http://www.firstobject.com/fast-start-to-xml-in-c++.htm">Fast start to XML in C++</a></p>
 <p>[2] <a href="http://www.firstobject.com/dn_markupmethods.htm">CMarkup Methods</a></p>
-]]>
-        </content>
-    </entry><entry>
-        <title type="html"><![CDATA[关于Unicode编码]]></title>
-        <link href="study/unicode-and-ansi"/>
-        <published>2012-04-23T00:00:00.000Z</published>
-        <updated>2012-04-23T00:00:00.000Z</updated>
-        <id>study/unicode-and-ansi</id>
-        <content type="html" xml:base="" xml:lang="en">
-            <![CDATA[ <p>很多Windows\C++的初学者对于<code>TCHAR</code>, <code>LPCTSTR</code>这些怪异的符号很头疼。(我有一个能力很强的同事便是如此，甚至因为这个丧失了对Windows开发的兴趣，转去做Java了。)今天就把这些玩意一探究竟吧。</p>
-<h2 id="简述ansi与unicode">简述ANSI与Unicode</h2><p>显示某个字符，可以用单字节存储，也可以用双字节存储。前者便是我们常见的ANSI编码策略，适用于大多数的英系字符；后者则是Unicode编码策略，几乎可以用以表示世界上所有的文字。</p>
-<p>在VC++编译器中，对应于以上两种编码方式，分别给出了<code>char</code>与<code>wchar_t</code>两种数据类型。<em>Unicode</em>还有诸多好处，但现在仅需知道它作为一种双字节存储方式可以更好的支持Windows程序的国际化。</p>
-<blockquote>
-<p>不止是Unicode，Windows还会用到更多别的双字节编码，如默认使用的UTF-16字符编码。</p>
-</blockquote>
-<p>作为程序员，一定希望自己的C/C++代码适用于所有的字符编码吧？</p>
-<p><strong>建议</strong>：使用通用的数据类型来表示字符与字符串。举个例子吧，请把</p>
-<pre>char cResponse; // &#39;Y&#39; or &#39;N&#39;
-char sUsername[64];
-// str* functions
-</pre><p>和
-    wchar_t cResponse; // &#39;Y&#39; or &#39;N&#39;
-    wchar_t sUsername[64];
-    // wcs* functions
-替换成：</p>
-<pre>#include&lt;TCHAR.H&gt; // Implicit or explicit include
-TCHAR cResponse; // &#39;Y&#39; or &#39;N&#39;
-TCHAR sUsername[64];
-// _tcs* functions
-
-</pre><p>这样就照顾了多语言环境的需求(就像Unicode)，是更加通用的一种形式。</p>
-<p>在实际编码的时候，如在VS2010的环境下，可以这样设置编译时所用的字符集：(<em>常规-&gt;字符集</em>)</p>
-<p><img src="https://dl.dropboxusercontent.com/u/43678603/blog_images/setUnicode.png" alt="setUnicode"></p>
-<p>如上图所示，若设置为Unicode，<code>TCHAR</code>将视为<code>wchar_t</code>；若设置为多字节，<code>TCHAR</code>将被视为<code>char</code>。项目的具体设置不会影响到<code>wchar_t</code>或是<code>char</code>类型的使用了。为啥会这样呢，请看<code>TCHAR</code>的定义：</p>
-<pre>#ifdef _UNICODE
-typedef wchar_t TCHAR;
-#else
-typedef char TCHAR;
-#endif
-
-</pre><p><code>_UNICODE</code>宏的作用就是当项目&quot;<em>设置为Unicode字符集</em>&quot;时，<code>TCHAR</code>含义是<code>wchar_t</code>；&quot;<em>设置为多字节字符集</em>&quot;时，<code>TCHAR</code>含义是<code>char</code>。</p>
-<p>与上述类似，为了支持各字符集都能使用最基本的函数，最好使用<code>_tcscpy，_tcslen，_tcscat</code>函数来代替<code>strcpy，strlen，strcat</code>(出于安全的考虑，常会在后面加上<code>_s</code>)或<code>wcscpy,wcslen,wcscat</code>(已经考虑了安全性)。</p>
-<p>strlen的原型如下：</p>
-<pre>size_t strlen(const char*);
-
-</pre><p>wcslen的原型如下：</p>
-<pre>size_t wcslen(const wchar_t* );
-
-</pre><p>最好使用_tcslen，从<em>逻辑</em>上可将其原型表述为：</p>
-<pre>size_t _tcslen(const TCHAR* );
-
-</pre><p><strong>wc</strong>表示宽字符，可知<code>wcs</code>表示宽字符串，同理可知<code>_tcs</code>表示_T字符串，能猜到_T在逻辑上既代表<code>char</code>又代表<code>wchar_t</code>了吧？</p>
-<p>不过，实际上，<code>_tcslen</code>(还有其他<code>_tcs</code>前缀的函数)并<strong>不是</strong>一个拥有完整定义的真实函数，而仅仅是一个<strong>宏</strong>。其定义应该长这样子：</p>
-<pre>#ifdef _UNICODE
-#define _tcslen wcslen
-#else
-#define _tcslen strlen
-#endif
-
-</pre><p>在<strong><code>TCHAR.H</code></strong>中，会找到与之相似的准确定义。</p>
-<blockquote>
-<p>为何定义成宏，而不是直接定义为函数接口呢？</p>
-</blockquote>
-<p>原因很简单，lib或是dll只能导出单一的函数名与参数类型(这里不考虑C++的重载)。例如，你导出的是：</p>
-<pre>void _TPrintChar(char);
-
-</pre><p>而应用程序正好需要用到</p>
-<pre>void _TPrintChar(wchar_t);
-
-</pre><p>该怎么办呢？单字节参数不会无缘无故的变成双字节。其实那是两个不同的函数：</p>
-<pre>void PrintCharA(char); // A = ANSI
-void PrintCharW(wchar_t); // W = Wide character
-
-</pre><p>如果定义一个宏，就轻而易举的解决了这个问题：</p>
-<pre>#ifdef _UNICODE
-void _TPrintChar(wchar_t);
-#else
-void _TPrintChar(char);
-#endif
-
-</pre><p>届时，应用程序只需如此调用：</p>
-<pre>TCHAR cChar;
-_TPrintChar(cChar);
-
-</pre><p>宏避免了两种字符集的共存，并允许我们可以运用ANSI或Unicode编码的函数来处理各类字符或字符串。大多数windows函数都采取了这样的措施，为了简化程序员的工作，只写一个函数(用宏去转换)是非常棒的解决方法。<code>SetWindowText</code>便是一个典型的例子：</p>
-<pre>// WinUser.H
-#ifdef UNICODE
-#define SetWindowText  SetWindowTextW
-#else
-#define SetWindowText  SetWindowTextA
-#endif // !UNICODE
-
-</pre><p>极少数的函数没有采用宏，而是仅仅以<strong>W</strong>或<strong>A</strong>后缀作为区分。例如<code>ReadDirectoryChangesW</code>，它并没有ANSI编码的等价函数。</p>
-<h2 id="ansi与unicode的转换">ANSI与Unicode的转换</h2><p>我们一般习惯用双引号来标记字符串。其实那是ANSI字符串的用法，其中每个字符均为单字节存储，例如：</p>
-<pre>&quot;This is ANSI String. Each letter takes 1 byte&quot;
-
-</pre><p>上述字符串<strong>不支持</strong>Unicode，对多语言环境的支持有限。想要表现为Unicode编码，你需要用到<code>L</code>前缀。例如：</p>
-<pre>L&quot;This is Unicode string. Each letter would take 2 bytes, including spaces.&quot;
-
-</pre><p>注意，<strong>L</strong>在字符串的前面，表明这是Unicode字符串。其中<strong>所有</strong>的字符都是双字节存储，包括英文字符、空格、数字、甚至是空字符。因此，Unicode字符串占用的空间将永远是2-字节的倍数。一个长度为7的Unicode字符串需要14字节，诸如此例。所以，永远不存在一个占用15个字节的Unicode字符串。</p>
-<p>更通用的说法是，字符串所占空间都是<code>sizeof(TCHAR)</code>个字节的倍数。</p>
-<p>当需要表示一个硬编码的字符串时，可以这样：</p>
-<pre>&quot;ANSI String&quot;; // ANSI
-L&quot;Unicode String&quot;; // Unicode
-
-_T(&quot;Either string, depending on compilation&quot;); // ANSI or Unicode
-// or use TEXT macro, if you need more readability
-
-</pre><p>其中，无前缀的是ANSI字符串，<strong>L</strong>前缀的是Unicode字符串，以<code>_T</code>或<code>TEXT</code>标识的，将根据宏定义而定。还是一样，<code>_T</code>和<code>TEXT</code>只是宏而已，它们定义如下：</p>
-<pre>// SIMPLIFIED
-#ifdef _UNICODE
- #define _T(c) L##c
- #define TEXT(c) L##c
-#else
- #define _T(c) c
- #define TEXT(c) c
-#endif
-
-</pre><p>这<code>##</code>符号是<a href="http://msdn.microsoft.com/en-us/library/09dwwt6y(v=vs.80).aspx">符号连接操作符</a>，它将<code>_T(&quot;Unicode&quot;)</code>替换为<code>L&quot;Unicode&quot;</code>，该替换取决于宏参数——<code>_UNICODE</code>是否被定义。如果没有被定义，<code>_T(&quot;Unicode&quot;)</code>意味着<code>&quot;Unicode&quot;</code>。<em>符号连接操作符</em>并不仅仅是VC或字符编码中的特定符号，它甚至存在于C语言中。</p>
-<p>注意，该宏既适用于字符串，也适用于字符。例如<code>_T(&quot;R&quot;)</code>将被转换为<code>L&quot;R&quot;</code>或<code>&quot;R&quot;</code>。前者为Unicode字符，后者为ANSI字符。</p>
-<p><strong>但，这无法转换变量(字符或字符串)</strong>。以下代码就是非法的：</p>
-<pre>char c = &#39;C&#39;;
-char str[16] = &quot;MyProject&quot;;
-
-_T(c);
-_T(str);
-
-</pre><p>最后两句代码可以在ANSI(多字节)下编译成功，因为<code>_T(x)</code>就是<code>x</code>，因此<code>_T(c)</code>和<code>_T(str)</code>将分别输出<code>c</code>和<code>str</code>。但在Unicode字符集下编译，则会报错：</p>
-<pre>error C2065: &#39;Lc&#39; : undeclared identifier
-error C2065: &#39;Lstr&#39; : undeclared identifier
-
-</pre><p>我们需要注意所有的字符、字符串操作的函数，尤其是windows API提供的那些，基本都是MSDN推荐的典范。拿<code>SetWindowsTextA/W</code>来说吧：</p>
-<pre>BOOL SetWindowText(HWND, const TCHAR*);
-
-</pre><p>想必应该知道了，<code>SetWindowText</code>仅仅是一个宏，它取决于你的编译配置，其含义可以是以下其中一个：</p>
-<pre>BOOL SetWindowTextA(HWND, const char*);
-BOOL SetWindowTextW(HWND, const wchar_t*);
-
-</pre><p>因此，不要困惑于下面这段取地址函数为啥调用失败了！</p>
-<pre>HMODULE hDLLHandle;
-FARPROC pFuncPtr;
-hDLLHandle = LoadLibrary(L&quot;user32.dll&quot;);
-pFuncPtr = GetProcAddress(hDLLHandle, &quot;SetWindowText&quot;);
-//pFuncPtr will be null, since there doesn&#39;t exist any function with name SetWindowText !
-
-</pre><p><code>SetWindowTextA</code>和<code>SetWindowTextW</code>都由<code>User32.dll</code>所导出的。并没有通用的函数名。</p>
-<p>有趣的是，在.Net 框架下总算有了一个通用的函数：</p>
-<pre>[DllImport(&quot;user32.dll&quot;)]
-extern public static int SetWindowText(IntPtr hWnd, string lpString);
-
-</pre><p>如果没有技术的改进，<code>GetProcAddress</code>怕是还会被一群<em>if..else</em>语句包围吧。</p>
-<p>所有的函数都有ANSI和Unicode两个版本，但<strong>实际上却都是由Unicode版本来实现</strong>的。这意味着：当你调用<code>SetWindowTextA</code>时，传入一个ANSI字符串，编译器会先将该字符串转换为Unicode字符串，然后调用<code>SetWindowTextW</code>。类似这样的实际操作(设置窗口的标题、内容及名称等)将都由Unicode版本的函数来执行！</p>
-<p>再举一个例子，获取窗口内容将用到<code>GetWindowText</code>。你调用<code>GetWindowTextA</code>时，若目的是得到一个ANSI的buffer。<code>GetWindowTextA</code>将先调用<code>GetWindowTextW</code>，并得到一个Unicode字符串(一个<code>wchar_t</code>数组)。然后为你把Unicode字符串转换为ANSI字符串。</p>
-<p>ANSI与Unicode互转的操作并不局限于GUI函数，而涵盖了整个Windows API系列中拥有两套方案的字符串处理函数。例如：</p>
-<ul>
-<li><code>CreateProcess</code></li>
-<li><code>GetUserName</code></li>
-<li><code>OpenDesktop</code></li>
-<li><code>DeleteFile</code></li>
-<li>etc</li>
-</ul>
-<p>这就是为何都推荐直接使用Unicode版本函数的原因了。不要仅仅因为多年的习惯，而固守ANSI不放，试着用Unicode来编译吧。但，我们可能还是会去存储或读取ANSI字符串，尤其在某些文件操作和消息传递中。这些转换函数还是有其存在的意义的。</p>
-<p><strong>注意</strong>：还有一种常见的定义类型：<strong><code>WCHAR</code></strong>，它等价于<code>wchar_t</code>。</p>
-<h2 id="更好的指针表示">更好的指针表示</h2><p><code>TCHAR</code>往往修饰单个字符，当然可以声明一个<code>TCHAR</code>的数组。如果你想表示一个<em>character-pointer</em>或一个<em>const-character-pointer</em>，会用下列哪一个呢？</p>
-<pre>// ANSI characters
-foo_ansi(char*);
-foo_ansi(const char*);
-/*const*/ char* pString;
-
-// Unicode/wide-string
-foo_uni(WCHAR*);
-wchar_t* foo_uni(const WCHAR*);
-/*const*/ WCHAR* pString;
-
-// Independent
-foo_char(TCHAR*);
-foo_char(const TCHAR*);
-/*const*/ TCHAR* pString;
-
-</pre><p>看过<code>TCHAR</code>的解释，应该会很明确的选择最后一种了吧。那样表示字符串最有效。别忘了引入windows.h头文件。<strong>注意</strong>：如果你的项目直接或间接的引入了windows.h，就不需要引入<code>TCHAR.H</code>了。</p>
-<p>首先，再来更好的理解一下老式的字符操作函数，看<code>strlen</code>：</p>
-<pre>size_t strlen(const char*);
-
-</pre><p>可以表示为：</p>
-<pre>size_t strlen(LPCSTR);
-
-</pre><p><strong><code>LPCSTR</code></strong>符号的定义类型是：</p>
-<pre>// Simplified
-typedef const char* LPCSTR;
-
-</pre><p>其含义拆解如下：</p>
-<ul>
-<li><strong>LP</strong> – Long Pointer</li>
-<li><strong>C</strong> – Constant</li>
-<li><strong>STR</strong> – String</li>
-</ul>
-<p><code>LPCSTR</code>的本质含义是指向固定字符串的(长)指针。</p>
-<p>用新的形式来表述<code>strcpy</code>就是：</p>
-<pre>LPSTR strcpy(LPSTR szTarget, LPCSTR szSource);
-
-</pre><p><strong>szTarget</strong>的类型是<code>LPSTR</code>,少了<strong>C</strong>，定义如下：</p>
-<pre>typedef char* LPSTR;
-
-</pre><p>注意<strong>szSource</strong>的类型是<code>LPCSTR</code>,<code>strcpy</code>不能改变原字符串，所以要用<code>const</code>限定。返回类型是无const限定的<code>LPSTR</code>。</p>
-<p>这些<code>str-</code>函数都是处理ANSI字符串的。但通常我们需要操作双字节字符串，等价的宽字符str函数同样给出了，例如，若计算一个宽字符数组(Unicode字符串)的长度，可以用<strong><code>wcslen</code></strong>：</p>
-<pre>size_t nLength;
-nLength = wcslen(L&quot;Unicode&quot;);
-
-</pre><p><code>wcslen</code>函数原型：</p>
-<pre>size_t wcslen(const wchar_t* szString); // Or WCHAR*
-
-</pre><p>也可以替换为</p>
-<pre>size_t wcslen(LPCWSTR szString);
-
-</pre><p>这里的<strong><code>LPCWSTR</code></strong>定义为：</p>
-<pre>typedef const WCHAR* LPCWSTR;
-// const wchar_t*
-
-</pre><p>拆开来看：</p>
-<ul>
-<li><strong>LP</strong> - Pointer</li>
-<li><strong>C</strong> - Constant</li>
-<li><strong>WSTR</strong> - Wide character String</li>
-</ul>
-<p>类似地，<strong><code>wcscpy</code></strong>与<code>strcpy</code>意义相同，只不过针对的是Unicode字符串：</p>
-<pre>wchar_t* wcscpy(wchar_t* szTarget, const wchar_t* szSource)
-
-</pre><p>也可以表现为：</p>
-<pre>LPWSTR wcscpy(LPWSTR szTarget, LPCWSTR szSource);
-
-</pre><p>其目标字符串为非常量宽字符串(<code>LPWSTR</code>)，源字符串为常量宽字符串。</p>
-<p>存在<code>wcs-</code>函数对应<code>str-</code>函数，前者处理Unicode字符串，后者处理ANSI字符串。</p>
-<p>虽然我已经建议过，直接用Unicode的函数替代ANSI与TCHAR的函数。原因很简单，应用程序是必须使用Unicode的，且无须考虑ANSI的兼容性。但出于完整性的考虑，还是继续说明对应的通TCHAR函数吧。</p>
-<p>计算字符串长度，可以用<strong><code>_tcslen</code></strong>函数(一个宏)。通常定义如下：</p>
-<pre>size_t _tcslen(const TCHAR* szString);
-</pre><p>或
-    size_t _tcslen(LPCTSTR szString);</p>
-<p>这里的<strong><code>LPCTSTR</code></strong>可分解为：</p>
-<ul>
-<li>LP - Pointer</li>
-<li>C - Constant</li>
-<li><strong>T = TCHAR</strong></li>
-<li>STR = String</li>
-</ul>
-<p>根据项目设置，<code>LPCTSTR</code>可以映射为<code>LPCSTR</code>(ANSI)或是<code>LPCWSTR</code>(Unicode)。</p>
-<p><strong>注意</strong>: <code>strlen</code>, <code>wcslen</code>或<code>_tcslen</code>返回的是<strong>字符</strong>的个数，而不是所占字节数。</p>
-<p>仍是拷贝字符串函数，这里为<strong><code>_tcscpy</code></strong>，定义如下：</p>
-<pre>size_t _tcscpy(TCHAR* pTarget, const TCHAR* pSource);
-</pre><p>或，更加通用的形式：
-    size_t _tcscpy(LPTSTR pTarget, LPCTSTR pSource);</p>
-<p>可以推断出<strong><code>LPTSTR</code></strong>的含义了吧！</p>
-<h2 id="用法举例：">用法举例：</h2><p>首先，看一个代码片段：</p>
-<div class="highlight"><pre><code class="cpp"><span class="keyword">int</span> main()
-{
-    TCHAR name[] = <span class="string">"Saturn"</span>;
-    <span class="keyword">int</span> nLen; <span class="comment">// Or size_t</span>
-
-    lLen = strlen(name);
-}</code></pre></div><p>在ANSI字符集下编译完美，因为<code>TCHAR</code>转换为<code>char</code>,因此参数<code>name</code>恰好是<code>char</code>字符数组。
-如果在Unicode/_UNICODE被定义(或项目设置了Unicode字符集)的情况下，就会报错：</p>
-<pre>error C2440: &#39;initializing&#39; : cannot convert from &#39;const char [7]&#39; to &#39;TCHAR []&#39;
-error C2664: &#39;strlen&#39; : cannot convert parameter 1 from &#39;TCHAR []&#39; to &#39;const char *&#39;
-
-</pre><p>对于第一个错误，程序员们开始如此修正了：</p>
-<pre>TCHAR name[] = (TCHAR*)&quot;Saturn&quot;;
-
-</pre><p>这不可能好使，因为不可能从<code>TCHAR*</code>转换为<code>TCHAR[7]</code>。同样的错误还会出现在，试图将ANSI字符串作为参数传递给Unicode函数：</p>
-<pre>nLen = wcslen(&quot;Saturn&quot;);
-// ERROR: cannot convert parameter 1 from &#39;const char [7]&#39; to &#39;const wchar_t *&#39;
-
-</pre><p>不幸的是(或谓之幸运？)，错误可以通过下面这般C风格的类型转换而修正：</p>
-<pre>nLen = wcslen((const wchar_t*)&quot;Saturn&quot;);
-
-</pre><p>此刻，你会不会觉得在自己对指针的理解又深入了一层？大错特错！这代码将会返回一个错误的结果，并且大多数情况下，会造成访问冲突。这样的套路，就像是本来需要一个80个字节的结构，却传入了一个<code>float</code>变量(从逻辑上而言)。</p>
-<p><strong><code>&quot;Saturn&quot;</code></strong>是一个7字节的顺序序列：</p>
-<p><img src="https://dl.dropboxusercontent.com/u/43678603/blog_images/stringTable.png" alt="stringTable"></p>
-<p>但当你把这一套传递给<code>wcslen</code>时，它会将每两个字节看做一个字符，因此，前两位[97,83]将被当做一个值为24915(<code>97&lt;&lt;8 | 83</code>)的字符，在Unicode里是:<code>？</code>。下一个字符则是[117,116]，以此类推。</p>
-<p>你的确没有打算把一串中文字符作为参数，但错误的类型转换却干了这事！因此，要深刻的明白强制转换是<strong>祸根</strong>！正确的做法是将第一行改为：</p>
-<pre>TCHAR name[] = _T(&quot;Saturn&quot;);
-
-</pre><p>这样源字符串就会根据编译设置，转换为7字节或是14字节。而<code>wcslen</code>函数应该这样使用：</p>
-<pre>wcslen(L&quot;Saturn&quot;);
-
-</pre><p>在上述示例代码中，用的是<code>strlen</code>，那在Unicode环境下无法通过编译。错误的解决方法又来了：</p>
-<pre>lLen = strlen ((const char*)name);
-
-</pre><p>在Unicode环境下编译，name将占用14字节(7个Unicode字符，包括null)。因为字符串<strong>&quot;Saturn&quot;</strong>仅包含英文字符，所以用的是原生的ASCII来表现。Unicode字符<code>&#39;S&#39;</code>将表现为[83,0],其他字符也都会接上一个零。注意，现在<code>&#39;S&#39;</code>表现为一个值为83的<strong>双字节</strong>字符，字符串的末端也将表现为一个值为<code>0</code>的<strong>双字节</strong>字符。</p>
-<p>所以当把这样的一个字符串传递给<code>strlen</code>时，第一个字符(第一个字节)将是正确的(如&quot;Saturn&quot;中的<code>&#39;S&#39;</code>)。但第二个字符/字节将导致字符串的结束。因此，<code>strlen</code>将返回一个错误的值(<code>1</code>)作为字符串的长度。</p>
-<p>Unicode字符串是可以包含非英文字符的，那样的结果就是无法预测的了。</p>
-<p>简言之，强制类型转换不总是好使的。或者选择用其本身的类型来正确表示，或者对Unicode与ANSI进行常规的转换。</p>
-<h2 id="字符数与字节数">字符数与字节数</h2><p>现在，应该可以理解下面的语句了：</p>
-<pre>BOOL SetCurrentDirectory( LPCTSTR lpPathName );
-DWORD GetCurrentDirectory(DWORD nBufferLength,LPTSTR lpBuffer);
-
-</pre><p>继续说，你肯定见过某些函数/方法中需要传入<strong>字符数</strong>，或是返回字符数吧。譬如<code>GetCurrentDirectory</code>，你需要传入的是字符数，而<strong>不是</strong>字节数。例如：</p>
-<pre>TCHAR sCurrentDir[255];
-
-// Pass 255 and not 255*2
-GetCurrentDirectory(sCurrentDir, 255);
-
-</pre><p>而另一方面，如果你需要为数字或字符数组分配空间，则一定要分配整的字节数。在C++中，常使用<code>new</code>关键字：</p>
-<pre>LPTSTR pBuffer; // TCHAR*
-
-pBuffer = new TCHAR[128]; // Allocates 128 or 256 BYTES, depending on compilation.
-
-</pre><p>但如果用的是内存分配函数如<code>malloc</code>,<code>LocalAlloc</code>,<code>GlobalAlloc</code>等等，你必须指定其字节数！</p>
-<pre>pBuffer = (TCHAR*) malloc (128 * sizeof(TCHAR) );
-
-</pre><p>这里将返回值强制转换是很有必要的，原因自己领悟。<code>malloc</code>语句内的表达式保证分配了其需要的字节数，并为所要求的字符数分配了空间。</p>
-<p><strong> <em>这篇文章翻译自<a href="http://www.codeproject.com/Articles/76252/What-are-TCHAR-WCHAR-LPSTR-LPWSTR-LPCTSTR-etc">What are TCHAR, WCHAR, LPSTR, LPWSTR, LPCTSTR (etc.)?</a>，由于时间仓促以及水平有限，必然存在某些错误，还请高手指正！</em> </strong></p>
 ]]>
         </content>
     </entry>

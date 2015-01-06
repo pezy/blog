@@ -7,7 +7,7 @@
  */
 
 .yue {
-  font: 400 18px/1.62 "Courier new", "Menlo", "Monaco", "SimSun", "monospace";
+  font: 400 17px/1.62 "Courier new", "Consolas", monospace;
   color: #333332;
 }
 .yue ::selection {
@@ -127,14 +127,14 @@
 .yue tt {
   color: #d14;
   font-size: 0.875em;
-  font-family: "Courier new", "Menlo", monospace;
+  font-family: "Courier new", "Consolas", monospace;
 }
 .yue pre {
   padding: 7px;
   overflow: auto;
   line-height: 1.5;
   font-size: 0.875em;
-  font-family: "Courier new", "Menlo", monospace;
+  font-family: "Courier new", "Consolas", monospace;
   border: 1px dashed black;
   background: ghostwhite;
   color: #4c4c4c;
@@ -290,8 +290,9 @@ html, body {
 }
 /* layout */
 .header {
-  font-size: 18px;
-  font-family: "Menlo", "Monaco", monospace;
+  font-size: 19px;
+  font-weight: blod;
+  font-family: "Courier New", "Consolas", monospace;
   padding: 20px 10px;
 }
 .header a {
@@ -328,7 +329,7 @@ html, body {
   zoom: 1;
 }
 .container:after {
-  content: "-------------------------------------------------------------------";
+  content: "------------------------------------------------------------";
   display: block;
   visibility: none;
   clear: both;
@@ -381,7 +382,7 @@ html, body {
   margin-bottom: 1em;
 }
 .entry-list .item-title {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 600;
   margin-bottom: 0;
 }
@@ -421,7 +422,7 @@ html, body {
   font-size: 12px;
   text-transform: uppercase;
   font-weight: 700;
-  font-family: "Menlo", "Monaco", monospace;
+  font-family: "Courier new", "Consolas", monospace;
 }
 .pagination .newer {
   position: absolute;

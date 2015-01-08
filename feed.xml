@@ -5,6 +5,69 @@
     <link href="" />
     <id>feed.xml</id>
     <entry>
+        <title type="html"><![CDATA[几点反思(一)]]></title>
+        <link href="life/introspection1"/>
+        <published>2015-01-08T00:00:00.000Z</published>
+        <updated>2015-01-08T00:00:00.000Z</updated>
+        <id>life/introspection1</id>
+        <content type="html" xml:base="" xml:lang="en">
+            <![CDATA[ <h2 id="有序-well-organized">有序(well-organized)</h2><p>不知道大家对这个词是怎么理解的, 我的理解很简单, 就是&quot;按部就班&quot;, 按照&quot;To-do list&quot;一件一件的做事。</p>
+<p>以我自身来说, well-organized 的一天就是: 早上迅速写完 LeetCode 的每日一题, 然后进入日常工作状态, 晚上吃完饭, 下班后, 看一会 C++ Primer 5th , 然后写习题答案. 如果还有时间, 就看看别的技术.</p>
+<p>由于我是按照 LeetCode 的通过率从高到低来做题的, 所以进展到现在, 题目的难度已经让我有点 Hold 不住了, 我在上面花费的时间呈线性增长. 按照上面的顺序, 这无疑影响了正常工作的内容.</p>
+<hr>
+<p>这里打断一下说另外一件事, 关于思维习惯的.</p>
+<p>几天前, 与<a href="http://www.douban.com/people/75874962/">@王月</a>有一次深入的交流, 意外发现我和他处理问题的方式截然不同, 如果同时面对一个难题:</p>
+<ul>
+<li>他会投入一段时间, 如果没有什么进展, 他会先放在一边, 继续做别的事情<sup><a href="#reference">1</a></sup>.</li>
+<li>我会死磕到底.</li>
+</ul>
+<p>我从来没意识到自己这样有什么不妥, 虽然会花费大量时间, 但我的确鲜有未曾解决的问题. 我死磕的过程是这样的:</p>
+<ol>
+<li>凭借自己的知识解决, 如果解决不了, 进入2</li>
+<li>凭借对问题背景的理解, 以及自己的见识, 找到相关书籍, 翻阅相关章节, 如果完全在知识边界之外, 进入3</li>
+<li>疯狂的 Google 搜索, 毫不夸张, 一般是10+的Tab页. 如果找到线索, 进入4, 否则进入5</li>
+<li>根据线索, 尝试, 猜测, 比较不同的线索, 推理. 这个过程比较耗时, 运气好往往能够解决问题. 没解决进入6</li>
+<li>该问题好像别人根本没遇到过一样, 优化关键字, 重组搜索策略, 譬如利用语言, 时间, 图片筛选. 这个步骤考验英语能力, 好的英语能够准确的帮助分词以及组合. 然后进入4</li>
+<li>基本属于没辙了, 但不愿放弃, 茶不思饭不想, 脑子里时不时就会捡起来考虑. (但这会严重占用脑 CPU, 导致其他工作收到影响)</li>
+</ol>
+<p>那么总结一下, 我这种方式有什么优劣?</p>
+<p><strong>PROS</strong></p>
+<ul>
+<li>不惧怕新事物, 曾经遇到 <code>octopress</code> 以及 <code>CSS</code> 等一些我完全没有知识背景的问题, 也能顺利解决.</li>
+<li>解决问题的过程中, 经常无意间发现更广阔的天地, 如好资源, 好社区, 某大牛等. 容易自然而然的开阔眼界.</li>
+<li>加深对一些知识的理解, 突破自己的局限. (发现某些问题自己以为无法解决, 但是却被别人解决了)</li>
+<li>不留问题在心中, 解决掉的那一刹那, 无比舒爽, 利于保持愉快的心情.</li>
+</ul>
+<p><strong>CONS</strong></p>
+<ul>
+<li>浪费时间, 得不偿失. 更多情况下, 是花了很多时间, 却未找到答案.</li>
+<li>容易分心, 死磕的时间一长, 搜索的面一广, 容易把注意力分散到别的上面去了. 引入更多的问题, 如想调整 VIM 里 <code>Tab</code> 的空格数, 却发现一款好看的配色, 立刻又想试试.</li>
+<li>顾此失彼, 不分轻重. 不是所有问题都值得死磕的, 因为一些暂时不重要的问题死磕, 导致此时此刻重要的问题得不到解决, 会造成更大的麻烦, 平添不必要的压力.</li>
+<li>有时候解决不了是因为知识储备不够, 如分明没有系统的学过 move 语义, 偏偏硬是要从人家的代码里理解透它. 这种死磕可谓不自量力.</li>
+</ul>
+<p>可以发现, 死磕的方式, 本质上是一种类似枚举的线性思维, 可以解决大量问题, 但容易 TimeOut. 随便在 Github 上搜索一下 LeetCode 的解题代码, 很多人都用这种方式刷题, 说白了就是不管三七二十一, 解决了问题就行.
+代码丑一点, 乱一点, 用点笨办法, 也不要紧.</p>
+<p>反观王月的方式, 会不会觉得很熟悉, 像不像领导对你的工作安排? 无论是开发项目, 还是研究产品, 项目经理都会对整体进度进行把控, 分配给你的任务, 不会没有deadline, 更不会无休无止, 放任自流.
+一旦你耗时过多, 或非常费力, 他就会找别的方法, 或是 kill 掉这个功能, 或是找更加擅长的同事来代替你. 而此时的你会作如何感想? 会有点不服气? 但也有点松了一口气?</p>
+<p>为什么项目经理能够立刻做出与<strong>问题本身</strong>无关的决策? 因为他是站在整个项目的角度去考虑问题的. 而<strong>时间成本</strong>是项目成本中很大的一环. 作为开发者, 盯着自己的一亩三分地, 显然是不会着眼于整个大局的.</p>
+<p>回到个人, 王月就像是管理一个项目一样管理自己的生命<sup><a href="#reference">2</a></sup>, 而我更像是个作坊里的小工, 闭门造车, 无心世事.</p>
+<p>从这个思维差异可以看出来, 从某个单一的角度去看待某个问题, 往往会得到一个非常片面的解决方案. 正如我上面举的例子, 同一道 LeetCode 题, 笨办法与巧办法将其解出, 带给人的收获可能差别非常大.</p>
+<p>就好比同一个问题, 我和王月都解决了, 可我花费更多的时间, 他花费更少的时间. 我俩的效率就差了一个档次. 长此以往, 就会慢慢拉开差距了.</p>
+<hr>
+<p>为什么说有序, 却扯出这么大一个别的话题? 因为可以举一反三.</p>
+<p>我理解的有序, 目的落在了&quot;序&quot;上, 为了&quot;次序&quot;而&quot;次序&quot;. 正如我为了得到&quot;问题的解&quot;, 而解决问题, 更具体的, 我为了刷 LeetCode, 所以不顾方法, 只为了 &quot;AC&quot;. 这显然是比较片面的理解.</p>
+<p>结合多个方面去思考, 考虑时间, 环境, 情况, 甚至自我状态, 情绪, 身体状况等等, 合理的<strong>安排/调整</strong>&quot;次序&quot;, 才是对于&quot;有序&quot;更高层次的理解.</p>
+<p>假如今天的 LeetCode 比较难, 早上地铁里没想出啥办法, 到了公司要死磕吗? 若此时恰好对工作上某一个难题有了好点子呢? 我需要执着于这个&quot;次序&quot;, 而强扭着先解决 LeetCode 再弄工作吗?</p>
+<p>还是那句话, 这一天可能结果都是干了那么三件事, 但经过合理安排的有序, 一定比严格遵守次序的有序, 过得更轻松, 惬意.</p>
+<hr>
+<p>下次再说说其他几个词.</p>
+<h2 id="reference">Reference</h2><ul>
+<li>[1] : 这个习惯可以从很多方面看出来，如在<a href="http://www.zhihu.com/question/20824615/answer/21783520">这个回答</a>里他在面对问题与疑惑时采取进退的策略.</li>
+<li>[2] : 他的经历会让他做出决策时更谨慎，如他曾赞同的<a href="http://www.zhihu.com/question/26724212/answer/33800406">一个回答</a>里所说: &quot;已经没有犯错的余地了，每一步必须走得很准才行&quot;.</li>
+</ul>
+]]>
+        </content>
+    </entry><entry>
         <title type="html"><![CDATA[2014年终总结]]></title>
         <link href="life/summary-2014"/>
         <published>2014-12-30T00:00:00.000Z</published>
@@ -21,7 +84,7 @@
 </ol>
 <p>第一阶段，恰为上半年，约莫到4月中旬；第二阶段从5月开始，直到年末。</p>
 <p>如果说去年对于<a href="../work/thinking-of-das">数据采集</a>的总结，达到了我个人对于这部分工作理解之高峰的话，后续的工作只能称得上是一路滑向山谷。这也是当一个软件逐步做大，参与的人员逐步变多，所带来的必然结果。
-第一版与第二版，几乎是我一个人把控，只需要做好<strong>KISS</strong>的原则即可。而到了第三版，领导决定对其增加许多额外的功能与职责，并举全组之力，希望其能够称之为一个完整的解决方案，坚持<strong>KISS</strong>就显得有些不切实际了。
+第一版与第二版，几乎是我一个人把控，只需要做好 <strong>KISS</strong> 的原则即可。而到了第三版，领导决定对其增加许多额外的功能与职责，并举全组之力，希望其能够称之为一个完整的解决方案，坚持 <strong>KISS</strong> 就显得有些不切实际了。
 只记得在 2013 年 10 月到 12 月份，无尽的讨论并未产生良好的设计，而是诞生了一个不断妥协的结果：与上层接口的妥协，与调用方的妥协，与领导的妥协，与行业经典软件的妥协。可以想象这样一个怪东西会有怎样的结局了。</p>
 <p>所以到了 2014 年，我过足了&quot;设计的瘾&quot;，开始回归到具体实现上来了。说说接触到的一些新的尝试：</p>
 <ol>
@@ -940,195 +1003,6 @@ Group节点是LOD更精细的一层. LOD节点有自身的位置和半径, 并�
 <p><strong>是不是我写的东西都很像说教呢？</strong></p>
 <p>其实大多数情况下，我都是在为自己说教，很多事情短时间内是想不清楚的，最有效的方式，就是先吸取前人的经验，去大胆的尝试。如果听不进前人的经验，自己原地迷惑抱怨，我想完全是在浪费生命。小学都学过《小马过河》，不亲自试试，如何知道水深水浅呢？</p>
 <p><strong>少谈一些情绪，多谈一些问题吧！</strong></p>
-]]>
-        </content>
-    </entry><entry>
-        <title type="html"><![CDATA[VC处理XML的方法]]></title>
-        <link href="study/vc-process-xml"/>
-        <published>2012-04-25T00:54:00.000Z</published>
-        <updated>2012-04-25T00:54:00.000Z</updated>
-        <id>study/vc-process-xml</id>
-        <content type="html" xml:base="" xml:lang="en">
-            <![CDATA[ <p>目前调研到两种比较好的方法：<code>CMarkup</code>和<code>TinyXML-2</code>。</p>
-<p>以下是两者分别的文档：<a href="http://www.firstobject.com/dn_markupmethods.htm">CMarkup</a>，<a href="http://www.grinninglizard.com/tinyxml2docs/index.html">TinyXML-2</a></p>
-<p>从上手的难易程度来看，目前偏向于使用<code>CMarkup</code>，不过有机会一定要研究一下<code>TinyXML-2</code>的使用，目前关于<code>TinyXML-2</code>的中文资料较少，正好花时间翻译整理一下。另外，它不仅开源，而且功能较<code>CMarkup</code>要全面，文档更加齐全。</p>
-<p>下面首先说一下<code>CMarkup</code>的基本使用方法：</p>
-<p>首先在<a href="http://www.firstobject.com/dn_markupmethods.htm">这里</a>下载<code>CMarkup</code>，里面包含一个<code>Markup.h</code>和<code>Markup.cpp</code>。分别引入自己的项目下。</p>
-<p><strong>NOTE:</strong> 貌似<code>CMarkup</code>仅支持MFC，在控制台程序中似乎无法使用。</p>
-<p>在引入之后，需在在<code>Markup.cpp</code>的头部加上<code>#include &quot;stdafx.h&quot;</code>，在下述<code>testXML</code>工程里，不再赘述这一过程。</p>
-<h2 id="创建xml">创建XML</h2><ol>
-<li>新建一个MFC工程(<code>testXML</code>)，选择基于对话框的就好，其余一切默认。</li>
-<li>在对话框上新建一个按钮(<code>Create</code>)，添加<code>BN_CLICKED</code>控件事件。</li>
-<li>在事件函数中写入一下代码：</li>
-</ol>
-<div class="highlight"><pre><code class="cpp"><span class="keyword">void</span> CtestXmlDlg::OnBnClickedBtmCreate()
-{
-    <span class="comment">// 创建XML</span>
-    CMarkup xml;
-    xml.AddElem( L<span class="string">"ORDER"</span> );
-    xml.IntoElem();
-    xml.AddElem( L<span class="string">"ITEM"</span> );
-    xml.IntoElem();
-    xml.AddElem( L<span class="string">"SN"</span>, L<span class="string">"132487A-J"</span> );
-    xml.AddElem( L<span class="string">"NAME"</span>, L<span class="string">"crank casing"</span> );
-    xml.AddElem( L<span class="string">"QTY"</span>, L<span class="string">"1"</span> );
-
-    xml.Save( L<span class="string">"F:\\Sample.xml"</span> );
-    MessageBox(L<span class="string">"Success!"</span>);
-}</code></pre></div><p>我们仅运用了两种方法：<a href="http://www.firstobject.com/dn_markAddElem.htm">AddElem</a>和<a href="http://www.firstobject.com/dn_markIntoElem.htm">IntoElem</a>，前者可以理解为增加一个标签，后者则是进入此标签，很简单的逻辑。</p>
-<p>以下就是生成的XML示例：</p>
-<div class="highlight"><pre><code class="xml"><span class="tag">&lt;<span class="title">ORDER</span>&gt;</span>
-<span class="tag">&lt;<span class="title">ITEM</span>&gt;</span>
-<span class="tag">&lt;<span class="title">SN</span>&gt;</span>132487A-J<span class="tag">&lt;/<span class="title">SN</span>&gt;</span>
-<span class="tag">&lt;<span class="title">NAME</span>&gt;</span>crank casing<span class="tag">&lt;/<span class="title">NAME</span>&gt;</span>
-<span class="tag">&lt;<span class="title">QTY</span>&gt;</span>1<span class="tag">&lt;/<span class="title">QTY</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">ITEM</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">ORDER</span>&gt;</span></code></pre></div><p>千万不要忘记了保存。即调用<code>XML.Save();</code>。</p>
-<p><strong>NOTE:</strong> 这里有一点很囧，就是保存路径无法写<strong>相对路径</strong>。如果有知道如何写入相对路径的，请留言告知，感激不尽。</p>
-<h2 id="读取xml">读取XML</h2><p>我们就来读上面写好的<code>Sample.xml</code>吧。如果在同一函数中，完全可以用<a href="http://www.firstobject.com/dn_markGetDoc.htm">GetDoc</a>方法重新读取该文档：</p>
-<pre>MCD_STR strXML = xml.GetDoc();
-
-</pre><p><code>Markup.h</code>中定义了<a href="http://www.firstobject.com/dn_markmcdstr.htm">MCD_STR</a>作为默认的字符串类型，你也可以使用<code>std::string</code>或者<code>CString</code>。然后可调用<a href="http://www.firstobject.com/dn_markResetPos.htm">ResetPos</a>方法来返回文档头部。或者咱们重新写个函数，专门来读：</p>
-<p><em>再在对话框上新建一个按钮(<code>Read</code>)，并添加<code>BN_CLICKED</code>事件。写下代码：</em></p>
-<div class="highlight"><pre><code class="cpp"><span class="keyword">void</span> CtestXmlDlg::OnBnClickedBtmRead()
-{
-    <span class="comment">// 读取XML</span>
-    CMarkup xml;
-    xml.Load(L<span class="string">"F:\\Sample.xml"</span>);
-    <span class="comment">//MCD_STR strXML = xml.GetDoc();</span>
-    <span class="comment">//xml.SetDoc(strXML);</span>
-
-    xml.FindElem(); <span class="comment">// root ORDER element</span>
-    xml.IntoElem(); <span class="comment">// inside ORDER</span>
-    CString outPut;
-    <span class="keyword">while</span> ( xml.FindElem( L<span class="string">"ITEM"</span>) )
-    {
-        xml.IntoElem();
-        xml.FindElem( L<span class="string">"SN"</span> );
-        MCD_STR strSN = xml.GetData();
-        xml.FindElem( L<span class="string">"QTY"</span> );
-        <span class="keyword">int</span> nQty = _wtoi( MCD_2PCSZ(xml.GetData()) );
-        outPut.Format(L<span class="string">"SN:%s\nQTY:%d"</span>,strSN,nQty);
-        xml.OutOfElem();
-    }
-
-    MessageBox(outPut);
-}</code></pre></div><p>首先，需要声明一个<code>CMarkup</code>对象，然后用<a href="http://www.firstobject.com/dn_markLoad.htm">Load</a>方法引入需要解析的XML文档。或者使用<a href="http://www.firstobject.com/dn_markSetDoc.htm">SetDoc</a>方法(见被注释的两行代码)。</p>
-<p>然后再循环调用<a href="http://www.firstobject.com/dn_markFindElem.htm">FindElem</a>与<a href="http://www.firstobject.com/dn_markGetData.htm">GetData</a>来定位并获取标签内容。这里如果需要的数字，可以通过<code>atoi</code>来转化字符串，如果在<code>Unicode</code>环境下，需要用<code>_wtoi</code>来转换。<a href="http://www.firstobject.com/dn_markunifiedstlmfc.htm">MCD_2PCSZ</a>在<code>Markup.h</code>中有定义，返回一个字符串的const指针。</p>
-<p>最后要注意的就是，每一次定位到某标签，需要调用<a href="http://www.firstobject.com/dn_markIntoElem.htm">IntoElem</a>来进入子标签，并继而通过<a href="http://www.firstobject.com/dn_markOutOfElem.htm">OutOfElem</a>跳出。每一次循环一定由一对<a href="http://www.firstobject.com/dn_markIntoElem.htm">IntoElem</a>和<a href="http://www.firstobject.com/dn_markOutOfElem.htm">OutOfElem</a>来包夹。</p>
-<p>运行结果如下：</p>
-<p><img src="https://dl.dropboxusercontent.com/u/43678603/blog_images/ReadXML.png" alt="result"></p>
-<h2 id="添加标签及属性">添加标签及属性</h2><p>上面创建的XML仅仅包含一个ITEM标签。下面再举一个例子，通过已有的数据源创建多个ITEM。然后通过<a href="http://www.firstobject.com/dn_markSetAttrib.htm">SetAttrib</a>来为<code>SHIPMENT</code>标签设置一个属性。</p>
-<p><em>在对话框上新建一个按钮(<code>Add</code>)，并添加<code>BN_CLICKED</code>事件。写下代码：</em></p>
-<div class="highlight"><pre><code class="cpp"><span class="keyword">struct</span> Items
-{
-    CString strSN;
-    CString strName;
-    <span class="keyword">int</span> nQty;
-};
-
-<span class="keyword">void</span> CtestXmlDlg::OnBnClickedBtnAdd()
-{
-    <span class="comment">// 向XML中添加标签与属性</span>
-    CArray&lt;Items,Items&amp;&gt; aItems;
-    Items item1 = {L<span class="string">"132487A-J"</span>,L<span class="string">"crank casing"</span>,<span class="number">1</span>};
-    Items item2 = {L<span class="string">"4238764-A"</span>,L<span class="string">"bearing"</span>,<span class="number">15</span>};
-    aItems.Add(item1);
-    aItems.Add(item2);
-
-    CString strPOCType(L<span class="string">"non-emergency"</span>);
-    CString strPOCName(L<span class="string">"John Smith"</span>);
-    CString strPOCTel(L<span class="string">"555-1234"</span>);
-
-    CMarkup xml;
-    xml.AddElem(L<span class="string">"ORDER"</span>);
-    xml.IntoElem(); <span class="comment">// inside ORDER</span>
-    <span class="keyword">for</span>(<span class="keyword">int</span> nItem=<span class="number">0</span>; nItem&lt;aItems.GetSize(); ++nItem)
-    {
-        xml.AddElem( L<span class="string">"ITEM"</span> );
-        xml.IntoElem(); <span class="comment">// inside ITEM</span>
-        xml.AddElem( L<span class="string">"SN"</span>, aItems[nItem].strSN );
-        xml.AddElem( L<span class="string">"NAME"</span>, aItems[nItem].strName );
-        xml.AddElem( L<span class="string">"QTY"</span>, aItems[nItem].nQty );
-        xml.OutOfElem(); <span class="comment">// back out to ITEM level</span>
-    }
-    xml.AddElem( L<span class="string">"SHIPMENT"</span> );
-    xml.IntoElem(); <span class="comment">// inside SHIPMENT</span>
-    xml.AddElem( L<span class="string">"POC"</span> );
-    xml.SetAttrib( L<span class="string">"type"</span>, strPOCType );
-    xml.IntoElem(); <span class="comment">// inside POC</span>
-    xml.AddElem( L<span class="string">"NAME"</span>, strPOCName );
-    xml.AddElem( L<span class="string">"TEL"</span>, strPOCTel );
-
-    xml.Save( L<span class="string">"F:\\Sample.xml"</span> );
-    MessageBox(L<span class="string">"Success!"</span>);
-}</code></pre></div><p>这段代码生成如下XML：根标签<code>ORDER</code>包含了两个<code>ITEM</code>子标签和一个<code>SHIPMENT</code>标签。该<code>ITEM</code>标签包括了<code>SN</code>,<code>NAME</code>和<code>QTY</code>子标签。<code>SHIPMENT</code>标签包含了一个<code>POC</code>子标签，<code>POC</code>拥有一个<code>type</code>属性，和一个<code>NAME</code>、<code>TEL</code>子标签。</p>
-<div class="highlight"><pre><code class="xml"><span class="tag">&lt;<span class="title">ORDER</span>&gt;</span>
-<span class="tag">&lt;<span class="title">ITEM</span>&gt;</span>
-<span class="tag">&lt;<span class="title">SN</span>&gt;</span>132487A-J<span class="tag">&lt;/<span class="title">SN</span>&gt;</span>
-<span class="tag">&lt;<span class="title">NAME</span>&gt;</span>crank casing<span class="tag">&lt;/<span class="title">NAME</span>&gt;</span>
-<span class="tag">&lt;<span class="title">QTY</span>&gt;</span>1<span class="tag">&lt;/<span class="title">QTY</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">ITEM</span>&gt;</span>
-<span class="tag">&lt;<span class="title">ITEM</span>&gt;</span>
-<span class="tag">&lt;<span class="title">SN</span>&gt;</span>4238764-A<span class="tag">&lt;/<span class="title">SN</span>&gt;</span>
-<span class="tag">&lt;<span class="title">NAME</span>&gt;</span>bearing<span class="tag">&lt;/<span class="title">NAME</span>&gt;</span>
-<span class="tag">&lt;<span class="title">QTY</span>&gt;</span>15<span class="tag">&lt;/<span class="title">QTY</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">ITEM</span>&gt;</span>
-<span class="tag">&lt;<span class="title">SHIPMENT</span>&gt;</span>
-<span class="tag">&lt;<span class="title">POC</span> <span class="attribute">type</span>=<span class="value">"non-emergency"</span>&gt;</span>
-<span class="tag">&lt;<span class="title">NAME</span>&gt;</span>John Smith<span class="tag">&lt;/<span class="title">NAME</span>&gt;</span>
-<span class="tag">&lt;<span class="title">TEL</span>&gt;</span>555-1234<span class="tag">&lt;/<span class="title">TEL</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">POC</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">SHIPMENT</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">ORDER</span>&gt;</span></code></pre></div><h2 id="查找标签">查找标签</h2><p><code>FindItem</code>方法默认查找<strong>下一个</strong>相邻的标签。如果其参数指定了标签名称，则一直向下查找，直到得到匹配的标签。找到标签的位置将被视为当前位置，下一次调用<code>FindItem</code>方法时，将以当前位置为开端，继续向下查找能够匹配的标签位置。</p>
-<p>在FindItem循环查找过程中，如果不想继续顺序查找下去，而是希望返回到第一个标签的位置，可以用<a href="http://www.firstobject.com/dn_markResetMainPos.htm">ResetMainPos</a>。例如上述例子中，如果你无法确定<code>SN</code>标签是否在<code>QTY</code>标签之前(而你恰好又是先找的<code>QTY</code>)，那就可以用<code>ResetMainPos</code>方法返回重新查找。代码如下：</p>
-<div class="highlight"><pre><code class="cpp"><span class="keyword">void</span> CtestXmlDlg::OnBnClickedBtnFind()
-{
-    <span class="comment">// 检索XML</span>
-    CMarkup xml;
-    xml.Load(L<span class="string">"F:\\Sample.xml"</span>);
-    <span class="comment">//MCD_STR strXML = xml.GetDoc();</span>
-    <span class="comment">//xml.SetDoc(strXML);</span>
-
-    xml.FindElem(); <span class="comment">// root ORDER element</span>
-    xml.IntoElem(); <span class="comment">// inside ORDER</span>
-
-    CString outXml;
-    <span class="keyword">while</span> ( xml.FindElem(L<span class="string">"ITEM"</span>) )
-    {
-        xml.IntoElem();
-        xml.FindElem( L<span class="string">"QTY"</span> );
-        <span class="keyword">int</span> nQty = _wtoi( MCD_2PCSZ(xml.GetData()) );
-        xml.ResetMainPos();
-        xml.FindElem( L<span class="string">"SN"</span> );
-        MCD_STR strSN = xml.GetData();
-        xml.OutOfElem();
-
-        outXml.Format(L<span class="string">"strSN:%s\nnQty:%d"</span>,strSN,nQty);
-    }
-
-    CString strFindSN(L<span class="string">"87890310-A"</span>);
-    MCD_STR strSN;
-    xml.ResetPos(); <span class="comment">// top of document</span>
-    xml.FindElem(); <span class="comment">// ORDER element is root</span>
-    xml.IntoElem(); <span class="comment">// inside ORDER</span>
-    <span class="keyword">while</span> ( xml.FindElem(L<span class="string">"ITEM"</span>) )
-    {
-        xml.FindChildElem( L<span class="string">"SN"</span> );
-        <span class="keyword">if</span> ( xml.GetChildData() == strFindSN )
-        {
-            strSN = xml.GetChildData();
-            <span class="keyword">break</span>; <span class="comment">// found</span>
-        }
-    }
-
-    xml.Save(L<span class="string">"F:\\Sample.xml"</span>);
-    MessageBox(outXml+<span class="string">"\n"</span>+strSN);
-}</code></pre></div><p>如果只是想找一个特殊的值(如上述代码中值为&quot;87890310-A&quot;的SN)，可以循环遍历<code>ITEM</code>标签，并比对其子标签<code>SN</code>的值。如果指定查找<code>ITEM</code>标签，如上述代码，那就不会去理其他标签，如<code>SHIPMENT</code>等。</p>
-<p>另外，进出<code>ITEM</code>标签去对其子标签<code>SN</code>进行查找，使用<code>FindChildElem</code>和<code>GetChildData</code>方法要便捷的多。</p>
-<h2 id="这就完了么？">这就完了么？</h2><p>额，准确的说，上述这点玩意儿，只是最最最基本的操作。不过完全可以看出<code>CMarkup</code>类的便捷简单了吧？利用<code>CMarkup</code>操作XML虽说已经是很成熟的技术了，但它的功能并不是太全面。这只是一种轻量级的工具，合适与否完全看个人需求了。更多的方法API请见<a href="http://www.firstobject.com/dn_markupmethods.htm">这里</a>。</p>
-<h2 id="参考资料">参考资料</h2><p>[1] <a href="http://www.firstobject.com/fast-start-to-xml-in-c++.htm">Fast start to XML in C++</a></p>
-<p>[2] <a href="http://www.firstobject.com/dn_markupmethods.htm">CMarkup Methods</a></p>
 ]]>
         </content>
     </entry>

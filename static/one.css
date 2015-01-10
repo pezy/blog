@@ -297,6 +297,7 @@ html, body {
 }
 .header a {
   color: #323233;
+  margin-left: -4px;
 }
 .header a:hover {
   opacity: 0.6;
@@ -314,7 +315,6 @@ html, body {
   text-decoration: none;
 }
 .menu a {
-  margin-left: 9px;
   text-decoration: none;
 }
 .menu a:before {
@@ -329,7 +329,7 @@ html, body {
   zoom: 1;
 }
 .container:after {
-  content: "------------------------------------------------------------";
+  content: "--------------------------";
   display: block;
   visibility: none;
   clear: both;

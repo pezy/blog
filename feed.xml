@@ -167,7 +167,7 @@
 ]]>
         </content>
     </entry><entry>
-        <title type="html"><![CDATA[使用八叉树算法管理场景对象(用OpenSceneGraph实现)]]></title>
+        <title type="html"><![CDATA[使用八叉树管理场景对象]]></title>
         <link href="tech/octree-note"/>
         <published>2014-09-15T00:00:00.000Z</published>
         <updated>2014-09-15T00:00:00.000Z</updated>
@@ -396,10 +396,12 @@ Group节点是LOD更精细的一层. LOD节点有自身的位置和半径, 并�
 所有LOD的粗略层都会用线框盒(osg::Geode)来表现.</p>
 <h2 id="更多内容">更多内容</h2><p>你会发现用四叉树, 八叉树这样的索引算法来集成场景图并不复杂. 在这一节里, 我们仅仅用<code>osg::LOD</code>节点来管理树的不同层次,
 但更好的选择应该是<code>osg::PagedLOD</code>来为巨大场景的渲染提供分页功能. 就像<strong>VPB</strong>管理地形数据库那样.</p>
-<p>你可能会对一些其他的空间索引算法感兴趣, 以下是他们的介绍链接:
-- <a href="http://en.wikipedia.org/wiki/Binary_space_partitioning">二叉空间分割(BSP)</a>
-- <a href="http://en.wikipedia.org/wiki/K-d_tree">K-dimensional tree(KDTree)</a>
-- <a href="http://en.wikipedia.org/wiki/R-tree">R-Tree</a></p>
+<p>你可能会对一些其他的空间索引算法感兴趣, 以下是他们的介绍链接:</p>
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Binary_space_partitioning">二叉空间分割(BSP)</a></li>
+<li><a href="http://en.wikipedia.org/wiki/K-d_tree">K-dimensional tree(KDTree)</a></li>
+<li><a href="http://en.wikipedia.org/wiki/R-tree">R-Tree</a></li>
+</ul>
 <p>试着用这些个方法来实现场景图结构. 你不仅可以用他们来<strong>抽稀</strong>渲染对象, 还可以更快的判断场景对象与线段(或其他操作)<strong>是否相交</strong>.</p>
 <p><em>-EOF-</em></p>
 ]]>

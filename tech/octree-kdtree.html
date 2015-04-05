@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="generator" content="nico 0.5.1">
     <meta name="theme" content="one 0.2">
-    <title>pezy's blog</title>
+    <title>Octree and K-d tree</title>
     <link rel="stylesheet" href="../static/one.css" />
   </head>
   <body>
@@ -26,35 +26,16 @@
       </div>
     </div>
     <div class="document yue">
-<div class="entry-list">
-
-  <div class="item" itemscope itemtype="http://schema.org/Article">
-    <h2 class="item-title">
-      <time datetime="2008-06-03T15:30:00.000Z" itemprop="dateModified">2008-06-03</time>
-      <a itemprop="name" href="../talk/fan">最近有点烦</a>
-    </h2>
-    
-  </div>
-
-  <div class="item" itemscope itemtype="http://schema.org/Article">
-    <h2 class="item-title">
-      <time datetime="2008-04-16T07:30:00.000Z" itemprop="dateModified">2008-04-16</time>
-      <a itemprop="name" href="../talk/xiaohong">萧萧落红泪</a>
-    </h2>
-    
-  </div>
-
-  <div class="item" itemscope itemtype="http://schema.org/Article">
-    <h2 class="item-title">
-      <time datetime="2007-11-11T11:20:00.000Z" itemprop="dateModified">2007-11-11</time>
-      <a itemprop="name" href="../talk/lovegoaway">不爱他，请早些拒绝他</a>
-    </h2>
-    
-  </div>
-
-  <div class="pagination">
-    <a class="newer" href="./2">Newer</a>
-  </div>
+<div class="hentry" itemscope itemtype="http://schema.org/Article">
+  <h1 class="entry-title" itemprop="name">Octree and K-d tree</h1>
+  <div class="entry-content" itemprop="articleBody"><p>首先 Octree 普遍翻译为八叉树，而其在二维空间中表现为 Quadtree, 即四叉树。故合称为 <code>QO trees</code>.</p>
+<p>其次，无论四叉、八叉树，还是 KD 树，都是 box tree.</p>
+<p>最后，QO trees 与 KD tree, 最大的区别在于：</p>
+<ol>
+<li>前者基于有限空间(finite-sized box), 而后者却是无限空间(near-infinite box).</li>
+<li>面对一个子空间，前者一刀4/8份（全维度切割），后者一刀2份(单一维度切割)。  </li>
+</ol>
+</div>
 </div>
 </div>
     <div class="footer">

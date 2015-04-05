@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="generator" content="nico 0.5.1">
+    <meta name="theme" content="one 0.2">
+    <title>面试小感</title>
+    <link rel="stylesheet" href="../static/one.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="brand">
+          <a class="home" href="../">pezy's blog</a>
+          <p><span class="tagline">> 驽马十驾, 功在不舍</span></p>
+          <br/>
+        </div>
+        <div class="menu" role="navigation">
+          <a href="https://github.com/pezy/blog/wiki">WIKI</a>
+          <a href="../../../../tech">tech</a>
+          <a href="../../../../talk">talk</a>
+          <a href="../../../../poem">peom</a>
+          <br/><br/>
+        </div>
+      </div>
+    </div>
+    <div class="document yue">
+<div class="hentry" itemscope itemtype="http://schema.org/Article">
+  <h1 class="entry-title" itemprop="name">面试小感</h1>
+  <!--
+  <div class="entry-description" itemprop="description"><p>2015 年的面试体验</p></div>-->
+  <div class="entry-content" itemprop="articleBody"><p>最近去面试了两家公司，一家做嵌入式开发，一家做游戏。</p>
+<p>都有笔试、上机、面谈等等环节，只不过一家偏重 C 语言，另一个偏重 C++，我姑且称之为第一家与第二家吧。</p>
+<h2 id="笔试">笔试</h2><p>第一家的笔试题，就跟大学的考试无异，基础的 C 语言语法，一些概念的辨析，大片大片的选择题。</p>
+<p>第二家的笔试题，要更加实际，直接上代码，然后问你这段代码目的是什么？有什么问题。</p>
+<blockquote>
+<p>在我看来，第一家重视基础，且因为同时参与招聘的还有校招，所以懒得为社招单独出题了。第二家，是比较务实的，会不会改 Bug，对于一个职业程序员来说，是一项最基本的功能。C++ 里坑尤其多，就看你能不能一一识别出来，然后轻松的躲过。</p>
+</blockquote>
+<h2 id="上机">上机</h2><p>第一家的上机，是两道算法题，第一道关于子网掩码划分问题，给你两组 <code>&lt;IP 地址，子网掩码&gt;</code>，让你求这两组是否在同一段。第二道是丑数，属于数学公式类的。</p>
+<p>第二家的上机，是一个类的实现，没错，就是传说中的 <code>String</code> 类的实现，包括自己写测试用例来测试该类。王月说这个没难度，我想主要原因是 C++ Primer 里面有这方面的内容，但书里的写法是基于 <code>std::allocator</code> 的，对于与 C 语言的兼容基本没考虑，里面也是存在一点小坑的。如 <code>c_str()</code> 如何实现？我后来完善了习题答案，补充了这方面的考虑，的确还花费了点精力。</p>
+<p>试想，如果面试前，你完全没考虑过这方面的问题，也没做过这习题，你能否在短短几十分钟内写出整个类，以及测试用例？</p>
+<blockquote>
+<p>对于面试中遇到 String 类的实现，我非常不建议你用 <code>std::allocator</code>，因为上机环境，我还没见过一家用 VS 2010 以上来考察的。第一家是 VS 2005, 第二家是 VS 2008。 C++ 11 就不用想了。建议使用 <string.h> 来辅助实现，如 <code>strcpy</code> + <code>strlen</code> 等函数。这样的方式更简单，代码量极少，在比较紧张的情况下也不会写错。但坑爹的是，VS 里 <code>strcpy</code> 会有警告，尽量提前了解下 <code>strcpy_s</code> 的参数。（我是当场临时决定这种方案的，没想到效果不错）</p>
+</blockquote>
+<p>综合来讲，上述两个环节，我还是很坚挺的，基本没出什么岔子。这得益于我花了近半年的时间来写《C++ Primer 5th》的答案，和一天一道做 LeetCode 题。</p>
+<h2 id="面谈">面谈</h2><p>对于学生，这个环节可能要轻松一些，因为只要你在学校不是瞎混了四年，眼界也不仅仅局限于各种垃圾培训视频和 QQ 群、贴吧讨论的话，基本没啥问题。</p>
+<p>但对于我这样社招的人来说，就算是真正的考察环节了。</p>
+<p>这个时候，你有没有用心工作，对于平时工作内容认识到什么深度，就很关键了。我的前三年，在数据采集上投入了极大精力，而且由于自己负责了一个较核心的模块，所以对于整体架构，以及几乎全部代码细节，都有很深刻的认识与领悟。而近一年来的三维图形开发，却总感觉没有入门，甚至感觉连门都没摸着，工作也很痛苦，鲜有成就感。</p>
+<p>于是，这就是“看对眼”的环节了，第一家公司对我前三年的那个项目很感兴趣，重点询问了那个，那我当然是侃侃而谈，相谈甚欢了。于是这一环节也很顺利。第二家公司，因为是做游戏的，显然对于三维图形方面感兴趣，我立刻现出原形，捉襟见肘起来。</p>
+<blockquote>
+<p>我的教训是，尽早的选对方向很重要。除非你是学生，否则全面撒网一点好处也没有。还是那个比喻，一个只会九阳神功（内功）的张无忌，是无法解光明顶之围的，只有练成了乾坤大挪移（实践经验）才行。我一年前决定换到自己完全不熟悉的图形领域，其实还是有很大风险的。这个方向与我之前做的应用软件不同，短短不到一年的时间，是根本无法深入了解的。数据采集的坑并不深，做久了，几乎就摸着底了，对于网络传输上的要求也并非那么苛刻（本来是有机会进入网络编程这个大坑的，但业务场景的限制，我并没有太过深入）。而图形学，尤其是三维图形，真的很深。从线性代数，数值统计，到 OpenGL, Shader, 图形算法，每一项都需要很长时间的投入。</p>
+</blockquote>
+<p>对于第二家公司，我主要跪在下述问题：</p>
+<ol>
+<li>你研究图形，有没有封一个库？喜欢 3D 游戏，有没有写一个？</li>
+<li>D3D 了解？熟悉？（微软各种技术我从头到尾都摸过了，唯独这个 D3D，泪流满面）</li>
+<li>OpenGL 深入到什么程度了，给我讲讲 glxxx, glxxxx, glxxxxx. Shader 写过多复杂的？光照模型？光线追踪？</li>
+</ol>
+<p>而更惨的是，由于是零基础进入图形组，所以近一年做的活的确不够高端，都偏基础（其实还是很感谢我领导的，让我有一个循序渐进的过程）。所以导致这段经历并不出彩，尤其和采集那段没法比，把这个小辫子揪出来说道说道，必然悲催。</p>
+<hr>
+<p>综上，我感觉什么阶段就应该做什么事情。你是一个学生，就应该把该看的书都看了，从 C++ Primer, 到 CLRS，一个也别放过，认真看，习题也认真做。这些都是内功，是练习乾坤大挪移的基础。如果你已经工作，那么基础知识的补习就算一件比较奢侈的事情了。你更应该在工作中加强自己的实践能力，一层一层的突破乾坤大挪移的境界。分清主次，避免分散精力就变得异常重要。</p>
+<blockquote>
+<p>总结来说：内功决定你能走多远，经验决定你能走多快。</p>
+</blockquote>
+<h2 id="未来计划">未来计划</h2><p>自从 <a href="summary-2014">2014</a> 年发现自己基础不足之后，我就将重心极大程度的向重温本科知识上偏移。从 <em>C++ Primer</em> 到 LeetCode, 甚至更加关注数据结构与算法方面。但我并未意识到这些事情的迟来与不合时宜所带来的代价。也许两次面试很难说明问题，但至少也可以看出一点端倪。</p>
+<blockquote>
+<p>开复老师的话是对的，即使有了工作，也要在招聘旺季去尝试找工作，它真的能让你体会到很多事情。如你是否把握住了自己的发展方向、目前公司到底有多少优劣、你渴望的是怎样的工作环境、以及你目前技术处于什么水平等。不断面试的历练能让你更清醒的认识自己，更迅速的调整自己。</p>
+</blockquote>
+<p>知乎上常常见到面试受挫的应届生发牢骚的帖子，其实没有太大必要那么较真。我本人是很享受这个过程的，如果 BATFLAG 愿意给我面试机会，我也想去试试呢。（毕竟我还没遇到真正让我折服的 C/C++ 高手，实在有点心有不甘）</p>
+<p>就我自身而言，图形学仍然是我最应该尝试的方向。目前公司给我一个非常非常宽松的研究环境，我有大把的时间供自己支配。这是一个我以前并未注意的机会（毕竟人类总是容易忽视已经到手的东西...）。我尝试调整自己接下来努力的方向（排名分先后）：</p>
+<ol>
+<li>更加认真的对待工作中每一项任务。（这个的确还是最锻炼人）</li>
+<li>将图形学所需的基础技能点补全：线性代数(数学库) -&gt; API(OpenGL, D3D) -&gt; 深入底层（光栅、光照） -&gt; 实际应用（建模、游戏）</li>
+<li>重视实践，动手写一些有意思的东西</li>
+<li>更节省的（偷偷的）补基础：算法导论</li>
+<li>填坑：C++ Primer 与 LeetCode. (酌情考虑)</li>
+</ol>
+<p>PS: 最后还有一点改变，就是不再写读书笔记了，按王月的话说，&quot;我越来越像一个书贩子了&quot;。为了读书而读书没有意义，效果也不大。我觉得读书的目的还是为了刺激思考。</p>
+<blockquote>
+<p>记录本身毫无意义，记忆在搜索时代也慢慢退场。一切为了<strong>解决问题</strong>，一切为了思考<strong>本质</strong>，一切为了<strong>创造</strong>。</p>
+</blockquote>
+<p><strong>不畏浮云遮望眼，只缘身在最高层。</strong></p>
+</div>
+
+  <div class="entry-meta">
+    <time class="updated" datetime="2015-04-03T00:00:00.000Z" itemprop="dateModified">Friday, Apr 3rd, 2015</time>
+    in <span class="entry-tags">
+      
+      <a href="../tag/thinking/">thinking</a>
+      
+    </span>
+  </div><div class="ds-thread"></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"pezy"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+</div>
+</div>
+    <div class="footer">
+    </div>
+    <div class="github"><a class="github-link" href="https://github.com/pezy">Fork me on GitHub</a></div>
+    <script src="../static/one.js"></script>
+  </body>
+</html>

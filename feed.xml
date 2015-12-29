@@ -5,6 +5,62 @@
     <link href="" />
     <id>feed.xml</id>
     <entry>
+        <title type="html"><![CDATA[几点反思(二)]]></title>
+        <link href="talk/introspection2"/>
+        <published>2015-11-22T00:00:00.000Z</published>
+        <updated>2015-11-22T00:00:00.000Z</updated>
+        <id>talk/introspection2</id>
+        <content type="html" xml:base="" xml:lang="en">
+            <![CDATA[ <h2 id="黑色的高三">黑色的高三</h2><p>记忆里的高三，是黑色的。那段时间留下太多的遗憾，以至于我害怕想起，偶尔想起也会暗自神伤。上课睡觉、和父母发脾气，甚至不做考题，不写作业。这些幼稚愚蠢的行为，总会一次又一次的刺激我的神经，让我百般悔恨，却又无可奈何。</p>
+<p>距离那年高考已经八年有余，我和那段记忆的抗争也不断持续，最终记忆褪去了长夜般的颜色，恢复了本来的样子。</p>
+<p>遗憾，是因为起落，如果没有过巅峰，也就不存在低谷。高中的我，本质上是一个暴发户，暴发在高二。或因文理分科，或因暗恋动力，或因师生缘分，总之高二集齐天时地利人和，让我从一个传统差生，一跃有了冲击清北的幻觉。高三去了所谓的“重点班”，屡受重创，从此便一蹶不振。</p>
+<p>其实现在想来，我无论从哪个方面，都没有成为真正“优等生”的条件。</p>
+<ol>
+<li>科目上，我有明显的弱项：英语。从初中开始就基础不牢，并从未有所改善。其他科目，除了数学、语文，也只是维持中等水平。</li>
+<li>高一，我是个不折不扣的差生，几乎所有科目都在及格线上徘徊。成绩，后来可以赶上来，但这些知识却很难再有机会巩固。到高三，就会需要更多的努力来弥补这部分薄弱的知识点。</li>
+</ol>
+<p>总结来说，<strong>短板依然是短板</strong>，<strong>学习缺乏连续性</strong>。</p>
+<p>这两大原因，都被我高二数一数二的成绩所掩盖，直到高三才给我致命一击。更致命的是，高二“成功”的学习经验，几乎毫无技巧可言，就是投入大量时间。那段时间我熬夜很严重，但学习兴致也很高，短期的正面回馈也很多。让我错失了许多纠正坏习惯的机会。俗话说：“战术上的勤奋，容易掩盖战略上的懒惰”。此之谓也。我的坏习惯包括，周末、寒暑假容易完全放松，作业喜欢拖延，喜欢集中突击。这样就很容易造成，之前的努力无法持续回馈，需要反复花费大力气补回。就像一场千米长跑，我总以百米加速的速度取得暂时领先，然后无以为继，再次加速，再次无以为继，再而三，三而竭，最终无力前行。</p>
+<p>这些原因会造成的后果，我当时完全没意识到。我的父母、老师，更容易从分数、结果出发，同样忽视这些潜在的缘由。最终在高三重压之下，我接连沦为倒数，产生前所未有的<strong>挫败感</strong>。一败再败，完全失去信心和勇气。结果也可想而知。</p>
+<p>其实很多陋习、错误，什么时候改正都不算晚。唯独<strong>挫败感</strong>最可怕，它能轻易的产生恶性循环，碾压人的士气，模糊人的心智。更严重的，还会产生绵延不绝的后遗症。</p>
+<h2 id="迷惘的大学">迷惘的大学</h2><p>许多人大学有遗憾，是因高考后的彻底放松。而我却略有不同，高考的结果给我带来了诸多不好的影响，包括与同学的失联（自卑所致），家人态度微妙的转变，自我谴责等等。我没有任何理由放松，相反还有一直有着沉重的包袱。</p>
+<p>但很快美丽的哈尔滨就给了我新生的幻觉，我没有嫌弃自己的大学，相反很接受它。大一第一学期的成绩，也像那么回事，比起糟糕的高一，算是开了个好头。难以想象，我那时竟然也会早早起床，去寒冷的操场读英语，也会列满计划表，为没有完成而羞愧，也会在网吧通宵，只是为了完成作业。不过挫败感依然如约而至，或是因为一次糟糕透顶的表白，一次未果的恋爱（算是最单纯勇敢的一次）；亦或是因为寒假的懒惰，错过 ACM 的磨砺。总之，熟悉的挫败感如约而至。我甚至又捡起了高三的麻药：文学创作。幻想着自己可以走“擅长”的道路。其实这不过都是逃避，“榕树下”那封毫不客气的退稿信给了我当头一棒，郁闷之下，又有了放弃之心。于是买好的文学史教材再未翻开，山海经和史记也成了摆设，几部未成形的小说，也永远的停在了开头。</p>
+<p>要知道，我是一个计算机系的学生，那些旁门左道，没让我成为更好的自己，反而给我带来了更致命的打击：挂科。也让我的计算机生涯开了一个很不好的头：对 C 语言的畏惧和厌恶。现在想想，其实大一下是多么黄金的时期。高数、大物，C 语言，数据结构。我糊里糊涂的错过了工科的基础，编程的基础。给后续的大学生活蒙上了阴影。</p>
+<p>然而这些并非最糟糕的，更糟糕的依然是<strong>挫败感</strong>，这个东西从未间断。让我懦弱不堪，三心二意，疲惫不已。</p>
+<p>我的成绩，直到大三借着分硬软方向时，才逐步走上正轨。我才逐步开窍，明白了编程的快乐。可是那时，我的同学们早已眼界大开，皆备傍身神技；诸多学长人脉，各个项目缠身。那是最需要疯狂 coding 的时期，而我还在图书馆看着各类软件方法论，懵懵懂懂。</p>
+<p>值得一提的是，我在知乎上<a href="http://www.zhihu.com/question/19599607/answer/28751194">第一个答案</a>，便是关于大学的回忆。无意间流露出的伤感，难以掩饰。</p>
+<hr>
+<p>总得说来，大学的遗憾，几乎都和一个&quot;晚&quot;字有关。</p>
+<ol>
+<li>对编程的兴趣来的太晚。</li>
+<li>程序圈的眼界开的太晚。</li>
+<li>如何正确利用网络明白的太晚。</li>
+<li>基础课程的重要性明白的太晚。</li>
+<li>经典书籍看的太晚。</li>
+<li>英语能力补的太晚。</li>
+<li>成绩的重要性认识的太晚。</li>
+<li>考研计划和准备的都太晚。</li>
+<li>找实习和工作准备的太晚。</li>
+</ol>
+<p>说白了就是事事都迟一步，等到意识到，时光荏苒，一去不返。</p>
+<h2 id="庸碌的工作">庸碌的工作</h2><p>古语有云，亡羊补牢，为时未晚。</p>
+<p>刚工作时，我便想好好把以前的痛点补上，但方向上却犹犹豫豫，一边复习着 Java Web，以熟悉公司项目代码；一边又看着 C#，想掌握一些更新的技术；同一时间，又觉得数据库重中之重，买了 Oracle 的大砖头准备啃。由于没了学业的重压，工作上又因项目方兴未艾，自己把控的时间较多。这才开始关注编程的技术圈子，开始知道遇到问题，怎样咨询 Google 和 StackOverflow。那时犹如刚出牢笼的鸟，左突右冲，恨不得齐头并进。又对考研并未死心，还抽空背着英语单词。</p>
+<p>第二年，长达半年之久&quot;<a href="end-of-2012">野外奔袭</a>&quot;，让我从千头万绪走入另一个极端：放任自流，随遇而安。今日不知明日在哪的日子里，毫无计划可言。工作上，无关紧要的杂事不断，于己却毫无益处。还好遇到了些奇人，看到了些奇景，想明白了一些世事。倒也不枉。后一年里，我遇到第一位倾佩的领导，又彻底放弃了考研之路。重心开始往工作上倾斜，做了很多杂活，尝试了很多技术实践。现在想起，仍然觉得这是必须经历的一段混乱。敢于尝试新鲜事物，才会知道哪里不足；知道不足，才会明白需要看哪些书；知道要读的书，才能理清技能树的脉络；最终才能形成对计算机派系、结构、知识点的把握。但那时的问题也很明显，浮躁不知深浅，这也是第一家公司的通病，夸夸其谈不落实，纸上谈兵不知浅。随后在 <a href="summary-2014">工作的第三年</a>专门治了下这个毛病，开始回头恶补基础。恰好工作上又有机遇让我接触到图形学，这盆冷水才泼的够彻底。</p>
+<p>虽然意识到基础的重要，也很清楚努力的方向，随着工作节奏越来越紧张，我却显得越发的有心无力，捉襟见肘。而前几年略显离经叛道的工作经历，显然没有给我养成良好的工作习惯，这就体现在我并不真正明白&quot;实际工程中的代码&quot;到底应该怎么写；更直接的，我估计不好工时，我不会合理的重构，我竟然也会处处埋坑，有时坑自己，有时坑同事。火上浇油的是，工作的变更，让领域背景显得越发的重要，在同事们视为常识的专业知识，我却很难准确理解。这个阶段的痛苦，在于既缺乏成就感，又容易产生自我怀疑。</p>
+<p>总之，四年的工作，可谓 &quot;庸碌&quot;。看似忙碌，实际成长缓慢，产出低下。</p>
+<p>这里只总结最严重的三个问题：</p>
+<ol>
+<li>不分轻重，小事容易优柔寡断，大事容易率性而为。（这里的&quot;大小&quot;，是依据对未来影响而言）</li>
+<li>心态不佳，弦紧绷不住，弦松止不住。不擅调节情绪，不擅分解压力，不擅预估，不擅留余。</li>
+<li>习得性无助，不注重培养自信，过早的投降，不正确的归因都是形成的原因。应学会每天给自己多提供正面反馈，减少负面印象。</li>
+</ol>
+<hr>
+<p>一路走来，看似遗憾多多，挫折不断。但想要跳出自己&quot;失败&quot;的怪圈，不断分析原因很重要，<strong>取悦自己</strong>也很重要。我常常趁着精力十足拼命学习，拼命工作，抱着一种短浅的眼光榨干自己的激情。长期以来，是极为致命的。因为这样的疲惫和精疲力尽会成为&quot;学习&quot;和&quot;工作&quot;在心里留下的印象，久而久之，就成了恐惧，进入习得性无助的怪圈。知道何时止，何时进，是需要锻炼的。</p>
+<p>我一直忽视了这方面的作用，只知道埋怨自己，埋怨自己。</p>
+<p>怪圈无涯，而吾生也有涯。愿亡羊而补牢。</p>
+]]>
+        </content>
+    </entry><entry>
         <title type="html"><![CDATA[Qt 中国峰会上的思考]]></title>
         <link href="talk/thinking-on-qt-develops-days"/>
         <published>2015-11-09T00:00:00.000Z</published>
@@ -936,97 +992,6 @@ Group节点是LOD更精细的一层. LOD节点有自身的位置和半径, 并�
 <p><strong>幸福？</strong>为什么这样说？人生最宝贵的东西是什么？如派一样，第一次证明自己，被他人认可？被玩伴戏弄，却因祸得福，对于一些模模糊糊的道理突然怀疑又突然的相信？第一次单纯的相信世界的美好，却被狠狠的泼了冷水，被迫接受现实？不经意间遭遇了怦然心动，却又忽而分离？总有一个瞬间，忽然感受到强大不可被战胜的父亲显露疲态，凸显衰老？哦，别忘了，经历上述这些的时候，总有一个人紧紧的抱着你、陪着你到最后，直到她也离去。</p>
 <p>她，母亲，也离去的时候，派已经开始与老虎、斑马、猩猩、鬣狗一起在海洋里漂流了。</p>
 <p><strong>在此之前，你要相信，那是我们都曾经历过的生活，是最彻底的幸福。</strong></p>
-]]>
-        </content>
-    </entry><entry>
-        <title type="html"><![CDATA[Reflection In Cpp]]></title>
-        <link href="tech/call-function-by-name"/>
-        <published>2012-12-11T15:22:00.000Z</published>
-        <updated>2012-12-11T15:22:00.000Z</updated>
-        <id>tech/call-function-by-name</id>
-        <content type="html" xml:base="" xml:lang="en">
-            <![CDATA[ <p>今天项目中需要通过读取数据库中的字符串，由字符串的值来确定调用哪一个方法来进行操作。我们不可避免的需要写if语句来匹配字符串，然后调用相应的函数。</p>
-<blockquote>
-<p>实际上在windows上，更方便而高效的是将要调用的方法都写在dll中，但项目进行到这个阶段，那些成群结队的方法早已经写好，封装成类，且被多个模块调用着，如果将之提取到dll，避免不了有大面积修改。于是，我只好尝试采用最笨拙的方法。</p>
-</blockquote>
-<p>其实，有点回调函数的意思。大家说说呢？</p>
-<p>看代码吧：</p>
-<div class="highlight"><pre><code class="cpp"><span class="comment">//</span>
-<span class="comment">//  main.cpp</span>
-<span class="comment">//  NameTodo</span>
-<span class="comment">//</span>
-<span class="comment">//  Created by pezy on 12-12-11.</span>
-<span class="comment">//  Copyright (c) 2012 PEZY. All rights reserved.</span>
-<span class="comment">//</span>
-
-<span class="preprocessor">#include &lt;iostream&gt;</span>
-<span class="preprocessor">#include &lt;string&gt;</span>
-
-<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;
-
-<span class="keyword">int</span> fun1(<span class="keyword">void</span>)
-{
-    <span class="built_in">cout</span> &lt;&lt; <span class="string">"function 1:\"int fun1(void)\" is called"</span> &lt;&lt; endl;
-    <span class="keyword">return</span> <span class="number">1</span>;
-}
-
-<span class="keyword">int</span> fun2(<span class="keyword">void</span>)
-{
-    <span class="built_in">cout</span> &lt;&lt; <span class="string">"function 2:\"int fun2(void)\" is called"</span> &lt;&lt; endl;
-    <span class="keyword">return</span> <span class="number">2</span>;
-}
-
-<span class="keyword">int</span> fun3(<span class="keyword">void</span>)
-{
-    <span class="built_in">cout</span> &lt;&lt; <span class="string">"function 3:\"int fun3(void)\" is called"</span> &lt;&lt; endl;
-    <span class="keyword">return</span> <span class="number">3</span>;
-}
-
-<span class="keyword">typedef</span> <span class="keyword">int</span> (*fun_ptr_t)(<span class="keyword">void</span>);
-
-<span class="keyword">typedef</span> <span class="keyword">struct</span> str_fun_t
-{
-    <span class="built_in">string</span> name;
-    fun_ptr_t ptr;
-}str_fun_t;
-
-<span class="keyword">void</span> bind(str_fun_t *key, <span class="built_in">string</span> name)
-{
-    <span class="keyword">static</span> str_fun_t str_fun_array[]=
-    {
-        {<span class="string">"fun1"</span>,fun1},{<span class="string">"fun2"</span>,fun2},{<span class="string">"fun3"</span>,fun3}
-    };
-
-    <span class="keyword">int</span> i;
-    key-&gt;name = name;
-    key-&gt;ptr = NULL;
-
-    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="keyword">sizeof</span>(str_fun_array)/<span class="keyword">sizeof</span>(str_fun_t); i++)
-    {
-        <span class="keyword">if</span> (key-&gt;name == str_fun_array[i].name) {
-            key-&gt;ptr = str_fun_array[i].ptr;
-            <span class="keyword">break</span>;
-        }
-    }
-}
-
-<span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])
-{
-
-    <span class="comment">// insert code here...</span>
-    <span class="built_in">string</span> name(<span class="string">""</span>);
-    str_fun_t key;
-
-    <span class="built_in">cout</span> &lt;&lt; <span class="string">"your function name:"</span> &lt;&lt; endl;
-    <span class="built_in">cin</span> &gt;&gt; name;
-    bind(&amp;key,name);
-    <span class="keyword">if</span>(key.ptr)
-        key.ptr();
-    <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"the function "</span> &lt;&lt; key.name &lt;&lt; <span class="string">" can not be found"</span> &lt;&lt; endl;
-
-    <span class="keyword">return</span> <span class="number">0</span>;
-}</code></pre></div><p>运行结果：</p>
-<p><img src="https://dl.dropboxusercontent.com/u/43678603/blog_images/result.png" alt="result"></p>
 ]]>
         </content>
     </entry>
